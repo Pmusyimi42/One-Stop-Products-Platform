@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :admin_users
+
+
   resources :order_items
 
 
@@ -10,6 +13,7 @@ Rails.application.routes.draw do
   resources :admin_products
   resources :payments
   resources :categories
+
 
   resources :admins
   resources :users
