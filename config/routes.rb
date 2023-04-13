@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-
-  resources :cart_items
-  resources :carts
+  resources :orders
   resources :admin_users
 
 
