@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
+
   resources :cart_items
   resources :carts
   resources :admin_users
 
 
   resources :order_items
+
 
 
   resources :product_categories
@@ -15,7 +17,6 @@ Rails.application.routes.draw do
   resources :admin_products
   resources :payments
   resources :categories
-
 
   resources :admins
   resources :users
