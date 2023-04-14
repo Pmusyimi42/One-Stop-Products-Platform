@@ -1,5 +1,5 @@
-Rails.application.routes.draw do
 
+Rails.application.routes.draw do
 
   resources :orders
   resources :admin_users
