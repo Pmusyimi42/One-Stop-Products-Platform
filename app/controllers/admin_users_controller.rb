@@ -32,6 +32,6 @@ class AdminUsersController < ApplicationController
       end
   
       def admin-user_params
-        params.permit(:id, :applicant_id, :course_id, :documents, :status)
+        params.permit(:id, :admin_id, :user_id)
      end
 end
