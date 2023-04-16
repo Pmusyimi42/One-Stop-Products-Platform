@@ -35,11 +35,11 @@ class ProductsController < ApplicationController
     #     @product = Product.find(params[:id])
     # end
 
-    # def product_params
-    #     params.permit(:title, :description, :isActive)
-    # end
+    def product_params
+        params.permit(:title, :description, :isActive)
+    end
 
-    # def render_not_found_response
-    #     render json: { errors: ['Product Not Found'] }, status: :not_found
-    # end
+    def render_not_found_response
+        render json: { errors: ['Product Not Found'] }, status: :not_found
+    end
 end
