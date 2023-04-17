@@ -11,6 +11,9 @@ ProductCategory.destroy_all
 Product.destroy_all
 User.destroy_all
 
+
+puts "Seeding in process...."
+
 # Create Categories
 electronics = Category.create(name: "Electronics")
 clothing = Category.create(name: "Clothing")
@@ -45,9 +48,6 @@ AdminProduct.create(admin_id: admin1.id, product_id: iphone.id)
 AdminProduct.create(admin_id: admin1.id, product_id: ipad.id)
 AdminProduct.create(admin_id: admin2.id, product_id: macbook.id)
 
-# Associate Admins with Users
-AdminUser.create(admin_id: Admin.first.id, user_id: User.first.id)
-AdminUser.create(admin_id: Admin.first.id, user_id: User.second.id)
 
 # Create Carts
 cart1 = Cart.create(user_id: user1.id)
@@ -67,6 +67,14 @@ OrderItem.create(order_id: order1.id, product_id: iphone.id, quantity: 1)
 OrderItem.create(order_id: order1.id, product_id: tshirt.id, quantity: 2)
 OrderItem.create(order_id: order2.id, product_id: book1.id, quantity: 3)
 
+
+# Associate Admins with Users
+AdminUser.create(admin_id: Admin.first.id, user_id: User.first.id)
+AdminUser.create(admin_id: Admin.first.id, user_id: User.second.id)
+
 # Create Payments
 payment1 = Payment.create(status: "paid", amount: 100.0, order_id: order1.id)
 payment2 = Payment.create(status: "paid", amount: 50.0, order_id: order2.id)
+
+
+puts "Seeding done."
