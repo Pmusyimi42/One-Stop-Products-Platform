@@ -10,7 +10,8 @@ class ProductsController < ApplicationController
     end
 
     def show
-        render json: @product, status: :ok
+        product = Product.find_by(id: params[:id])
+        render json: product, status: :ok
     end
 
     def create 
@@ -29,14 +30,10 @@ class ProductsController < ApplicationController
     end
 
 
-    # private
-
-    # def set_product
-    #     @product = Product.find(params[:id])
-    # end
+    private
 
     def product_params
-        params.permit(:title, :description, :isActive)
+        params.permit(:title, :description, :price, :imageUrl)
     end
 
     def render_not_found_response
