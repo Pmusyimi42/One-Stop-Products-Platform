@@ -1,8 +1,8 @@
 class ProductsController < ApplicationController
 
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-    skip_before_action :authorize, only: [:index, :show]
-    before_action :set_product, only: [:update, :destroy, :show]
+    # skip_before_action :authorize, only: [:index, :show]
+    # before_action :set_product, only: [:update, :destroy, :show]
 
     def index
         products = Product.all
@@ -10,7 +10,8 @@ class ProductsController < ApplicationController
     end
 
     def show
-        render json: @product, status: :ok
+        product = Product.find(params[:id])
+        render json: product, status: :ok
     end
 
     def create 
@@ -31,12 +32,12 @@ class ProductsController < ApplicationController
 
     private
 
-    def set_product
-        @product = Product.find(params[:id])
-    end
+    # def set_product
+    #     @product = Product.find(params[:id])
+    # end
 
     def product_params
-        params.permit(:title, :description, :isActive)
+        params.permit(:title, :description, :password)
     end
 
     def render_not_found_response

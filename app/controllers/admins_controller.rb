@@ -32,6 +32,6 @@ class AdminsController < ApplicationController
       end
   
       def admin_params
-        params.permit(:id, :applicant_id, :course_id, :documents, :status)
+        params.permit(:id, :email, :password_digest)
      end
 end

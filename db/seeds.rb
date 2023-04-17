@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-# Create some categories
 # seeds.rb
 
 AdminProduct.destroy_all
@@ -76,6 +68,10 @@ order2 = Order.create(user_id: user2.id)
 OrderItem.create(order_id: order1.id, product_id: iphone.id, quantity: 1)
 OrderItem.create(order_id: order1.id, product_id: tshirt.id, quantity: 2)
 OrderItem.create(order_id: order2.id, product_id: book1.id, quantity: 3)
+
+# Create Payments
+payment1 = Payment.create(status: "paid", amount: 100.0, order_id: order1.id)
+payment2 = Payment.create(status: "paid", amount: 50.0, order_id: order2.id)
 
 # Create Payments
 payment1 = Payment.create(status: "paid", amount: 100.0, order_id: order1.id)

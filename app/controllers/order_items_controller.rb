@@ -1,18 +1,16 @@
 class OrderItemsController < ApplicationController
-    before_action :set_order_item, only: [:index, :show, :create, :destroy]
+    before_action :set_order_item, only: [:show, :update, :destroy]
 
-    # GET /order_items
+
     def index
-        @order_items = OrderItem.all
-        render json: @order_items
+        render json: OrderItem.all
     end
 
-    # GET /order_items/:id
     def show
+        # @order_item = OrderItem.find(params[:id])
         render json: @order_item
     end
 
-    # POST /order_items
     def create
         @order_item = OrderItem.new(order_item_params)
         if @order_item.save
@@ -22,9 +20,17 @@ class OrderItemsController < ApplicationController
         end
     end
 
-    # DELETE /order_items/:id
+    def update
+        if @order_item.update(order_item_params)
+          render json: @order_item
+        else
+          render json: @order_item.errors, status: :unprocessable_entity
+        end
+      end
+
     def destroy
         @order_item.destroy
+        head :no_content
     end
 
 
@@ -35,6 +41,6 @@ class OrderItemsController < ApplicationController
     end
 
     def order_item_params
-        params.require(:order_item).permit(:product_id, :quantity)
+        params.permit(:order_id, :product_id, :quantity)
     end
 end
