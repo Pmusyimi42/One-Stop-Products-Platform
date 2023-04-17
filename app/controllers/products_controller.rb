@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
 
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+
     # skip_before_action :authorize, only: [:index, :show]
     # before_action :set_product, only: [:update, :destroy, :show]
 
@@ -41,4 +43,9 @@ class ProductsController < ApplicationController
     def render_not_found_response
         render json: { errors: ['Product Not Found'] }, status: :not_found
     end
+
+    def render_unprocessable_entity_response(invalid)
+        render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
+    end
+
 end
