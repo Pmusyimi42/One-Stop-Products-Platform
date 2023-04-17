@@ -20,12 +20,14 @@ class ProductsController < ApplicationController
     end
 
     def update 
-        @product.update(product_params)
-        render json: @product, status: :accepted
+        product = Product.find_by(id: params[:id])
+        product.update!(product_params)
+        render json: product, status: :accepted
     end
 
     def destroy 
-        @product.destroy 
+        product = Product.find_by(id: params[:id])
+        product.destroy 
         head :no_content
     end
 
