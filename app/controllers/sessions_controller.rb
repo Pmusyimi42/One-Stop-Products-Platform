@@ -1,10 +1,16 @@
 class SessionsController < ApplicationController
-  def new
-  end
+  #def new
+  #end
 
-  def create
-  end
+  #def create
+  #end
 
-  def destroy
+  #def destroy
+  #end
+
+  private
+
+  def login_params
+    params.permit(:name, :email, :password)
   end
 end
