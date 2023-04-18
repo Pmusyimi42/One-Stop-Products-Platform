@@ -19,6 +19,7 @@ gem 'puma', '~> 5.0'
 
 
 gem "bcrypt"
+gem "jwt", "~> 2.7"
 
 gem "jwt", "~> 2.2"
 
