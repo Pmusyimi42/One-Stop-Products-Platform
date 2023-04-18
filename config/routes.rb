@@ -4,6 +4,9 @@
 
 Rails.application.routes.draw do
 
+  get 'sessions/new'
+  get 'sessions/create'
+  get 'sessions/destroy'
   resources :orders
   resources :cart_items
   resources :carts
@@ -16,6 +19,14 @@ Rails.application.routes.draw do
   resources :categories
   resources :admins
   resources :users
+
+  # namespace :api do
+  #   namespace :v1 do
+  #     resources :admins, only: [:create]
+      post '/login', to: 'auth#create'
+      get '/profile', to: 'admins#profile'
+  #   end
+  # end
 
 
 

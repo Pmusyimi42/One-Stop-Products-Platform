@@ -1,3 +1,5 @@
+# seeds.rb
+
 AdminProduct.destroy_all
 AdminUser.destroy_all
 Admin.destroy_all
@@ -12,7 +14,7 @@ Product.destroy_all
 User.destroy_all
 
 
-puts "Seeding in process...."
+puts "🌱Seeding in process....🌱"
 
 # Create Categories
 electronics = Category.create(name: "Electronics")
@@ -77,4 +79,4 @@ payment1 = Payment.create(status: "Successful", amount: 100.0, order_id: order1.
 payment2 = Payment.create(status: "Successful", amount: 50.0, order_id: order2.id)
 
 
-puts "Seeding done."
+puts "🌱Seeding done.🌱"
