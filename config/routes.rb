@@ -17,6 +17,14 @@ Rails.application.routes.draw do
   resources :admins
   resources :users
 
+  # namespace :api do
+  #   namespace :v1 do
+  #     resources :admins, only: [:create]
+      post '/login', to: 'auth#create'
+      get '/profile', to: 'admins#profile'
+  #   end
+  # end
+
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
