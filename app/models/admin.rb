@@ -5,7 +5,10 @@ class Admin < ApplicationRecord
     has_many :users, through: :admin_users
 
     has_secure_password
-    validates :email, presence: true
-    # validates :password, presence: true
+
+    validates :password_digest, presence: true,  uniqueness: true
+    validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+
+
 end
 

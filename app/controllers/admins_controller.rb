@@ -1,7 +1,9 @@
 class AdminsController < ApplicationController
-  skip_before_action :authorized, only: [:create]
+  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+  rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
-    def index
+  
+  def index
         render json: Admin.all
       end
   
@@ -43,7 +45,14 @@ class AdminsController < ApplicationController
       end
   
       def admin_params
-        params.permit(:email, :password, :password_confirmation)
-      end
-      
+        params.permit(:id, :email, :password_digest)
+     end
+
+     def render_not_found_response
+      render json: { error: "Bird not found" }, status: :not_found
+    end
+  
+    def render_unprocessable_entity_response(invalid)
+      render json: { errors: invalid.record.errors }, status: :unprocessable_entity
+    end
 end

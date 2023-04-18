@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
 
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+
     # skip_before_action :authorize, only: [:index, :show]
     # before_action :set_product, only: [:update, :destroy, :show]
 
@@ -10,7 +12,7 @@ class ProductsController < ApplicationController
     end
 
     def show
-        product = Product.find(params[:id])
+        product = Product.find_by(id: params[:id])
         render json: product, status: :ok
     end
 
@@ -20,27 +22,30 @@ class ProductsController < ApplicationController
     end
 
     def update 
-        @product.update(product_params)
-        render json: @product, status: :accepted
+        product = Product.find_by(id: params[:id])
+        product.update!(product_params)
+        render json: product, status: :accepted
     end
 
     def destroy 
-        @product.destroy 
+        product = Product.find_by(id: params[:id])
+        product.destroy 
         head :no_content
     end
 
 
     private
 
-    # def set_product
-    #     @product = Product.find(params[:id])
-    # end
-
     def product_params
-        params.permit(:title, :description, :password)
+        params.permit(:title, :description, :price, :imageUrl)
     end
 
     def render_not_found_response
         render json: { errors: ['Product Not Found'] }, status: :not_found
     end
+
+    def render_unprocessable_entity_response(invalid)
+        render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
+    end
+
 end
