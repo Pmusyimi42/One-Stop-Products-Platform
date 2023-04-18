@@ -13,8 +13,17 @@ class AdminsController < ApplicationController
       end
   
       def create
-        admin = Admin.create!(admin_params)
-        render json: admin, status: :created
+        @admin = Admin.create(admin_params)
+        if @admin.valid?
+          @token = encode_token(admin_id: @admin.id)
+          render json: { admin: AdminSerializer.new(@admin), jwt: @token }, status: :created
+        else
+          render json: { error: 'failed to create admin', errors: @admin.errors.full_messages }, status: :unprocessable_entity
+        end
+      end
+
+      def profile
+        render json: {admin: AdminSerializer.new(current_user)}, status: :accepted
       end
   
       def update
