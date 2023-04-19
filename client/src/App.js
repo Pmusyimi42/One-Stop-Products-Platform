@@ -1,11 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Layout from './components/layout/Layout';
+import Home from './components/Home';
+import UserDetails from './components/UserDetails';
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route index element={<Home />} />
+          {/* authenticated users */}
+          <Route path='/user_details' element={<UserDetails />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
