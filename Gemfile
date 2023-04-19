@@ -19,9 +19,8 @@ gem 'puma', '~> 5.0'
 
 
 gem "bcrypt"
-gem "jwt", "~> 2.7"
+gem "jwt"
 
-gem "jwt", "~> 2.2"
 
 gem "active_model_serializers", "~> 0.10.12"
 

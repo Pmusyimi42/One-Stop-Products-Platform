@@ -1,5 +1,5 @@
 class AuthController < ApplicationController
-    skip_before_action :authorized, only: [:create]
+    # skip_before_action :authorized, only: [:create]
 
     def create
         @admin = Admin.find_by(email: admin_login_params[:email])
