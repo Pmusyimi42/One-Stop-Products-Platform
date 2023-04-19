@@ -179,7 +179,7 @@ DEPENDENCIES
   bcrypt
   bootsnap (>= 1.4.4)
   byebug
-  jwt (~> 2.2)
+  jwt
   listen (~> 3.3)
   puma (~> 5.0)
   rack-cors
