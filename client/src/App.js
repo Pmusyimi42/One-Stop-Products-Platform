@@ -1,9 +1,12 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Layout from './components/layout/Layout';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from './components/Home';
+import UserDetails from './components/UserDetails';
 import SingleProduct from './components/SingleProduct';
+import Navbar from "./components/Navbar";
+import Products from "./pages/products";
+
 import AddProducts from './components/AddProduct';
 import Preview from './components/Preview';
 // import AddProductForm from './components/AddProductForm';
@@ -12,25 +15,28 @@ import ProductList from './components/ProductList';
 import Dashboard from './components/Dashboard';
 import AddNewUser from './components/AddNewUser';
 
-function App() {
+
+
+export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Layout />}>
-          <Route index element={<Home />} />
-          {/* authenticated users */}
-          <Route path='/add_products' element={<AddProducts />} />
+
+    <div className="App">
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/products" component={Products} />
+          <Route path="/singleproduct" component={SingleProduct} />
+          <Route path="/userdetails" component={UserDetails} />
+           <Route path='/add_products' element={<AddProducts />} />
           <Route path='/products_list' element={<ProductList />} />
-          <Route path='/single_product' element={<SingleProduct />} />
           <Route path='/dashboard' element={<Dashboard />} />
 
 
           <Route path='/user_details' element={<UserDetails />} />
-        </Route>
-        <Route path='/login' element={<div>This is login page</div>} />
-      </Routes>
-    </BrowserRouter>
+        </Switch>
+      </Router>
+    </div>
+
   );
 }
-
-export default App;
