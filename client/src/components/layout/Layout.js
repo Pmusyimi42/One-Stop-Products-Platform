@@ -1,20 +1,19 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 // import Home from '../Home'
-import Footer from './Footer'
-import Navbar from './Navbar'
+import Sidebar from './Sidebar'
 
 function Layout() {
   return (
-    <section className='bg-zinc-300'>
-        <Navbar />
-        <div className='min-h-[80vh]'>
-            <Outlet />
+    <div className='flex flex-row bg-zinc-300 h-screen w-screen overflow-auto'>
+      <Sidebar />
+          <div className='p-4'>
+            <div className='bg-teal-200'>header</div>
+            <div>
+              <Outlet />
+            </div>   
         </div>
-        
-        
-        <Footer />
-    </section>
+    </div>
   )
 }
 
