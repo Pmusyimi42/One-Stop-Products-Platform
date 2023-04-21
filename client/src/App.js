@@ -1,12 +1,12 @@
 import React from "react";
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Layout from './components/layout/Layout';
 import Home from './components/Home';
 import UserDetails from './components/UserDetails';
 import SingleProduct from './components/SingleProduct';
 import Navbar from "./components/Navbar";
 import Products from "./pages/products";
+
 
 export default function App() {
   return (

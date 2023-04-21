@@ -1,5 +1,5 @@
 :root {
-    --navBg: #2f0114;
+    --navBg:#F47458;
 }
   
   .navbar {
@@ -44,7 +44,7 @@
   }
   
   .nav-text a {
-    color: aliceblue;
+    color: black;
     font-size: 18px;
     width: 95%;
     height: 100%;
@@ -55,7 +55,7 @@
   }
   
   .nav-text a:hover {
-    background-color: #b11448;
+    background-color: #D9D9D9;
 
   }
   
