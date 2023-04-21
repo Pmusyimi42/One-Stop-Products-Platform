@@ -7,9 +7,19 @@ import SingleProduct from './components/SingleProduct';
 import Navbar from "./components/Navbar";
 import Products from "./pages/products";
 
+import AddProducts from './components/AddProduct';
+import Preview from './components/Preview';
+// import AddProductForm from './components/AddProductForm';
+// import UserDetails from './components/UserDetails';
+import ProductList from './components/ProductList';
+import Dashboard from './components/Dashboard';
+import AddNewUser from './components/AddNewUser';
+
+
 
 export default function App() {
   return (
+
     <div className="App">
       <Router>
         <Navbar />
@@ -18,8 +28,15 @@ export default function App() {
           <Route path="/products" component={Products} />
           <Route path="/singleproduct" component={SingleProduct} />
           <Route path="/userdetails" component={UserDetails} />
+           <Route path='/add_products' element={<AddProducts />} />
+          <Route path='/products_list' element={<ProductList />} />
+          <Route path='/dashboard' element={<Dashboard />} />
+
+
+          <Route path='/user_details' element={<UserDetails />} />
         </Switch>
       </Router>
     </div>
+
   );
 }

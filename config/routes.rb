@@ -4,9 +4,13 @@
 
 Rails.application.routes.draw do
 
-  get 'sessions/new'
-  get 'sessions/create'
-  get 'sessions/destroy'
+  #get 'sessions/new'
+  #get 'sessions/create'
+  #get 'sessions/destroy'
+
+  post '/login', to: 'sessions#login'
+  post '/signup', to: 'users#signup'
+  get '/me', to: 'users#me'
   resources :orders
   resources :cart_items
   resources :carts
