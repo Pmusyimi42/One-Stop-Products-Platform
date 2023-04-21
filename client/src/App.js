@@ -1,6 +1,5 @@
 import logo from './logo.svg';
 import './App.css';
-<<<<<<< HEAD
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import Home from './components/Home';
@@ -17,17 +16,6 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
-=======
-import SingleProduct from './components/SingleProduct';
-
-function App() {
-  return (
-    <div className="App">
-
-      <SingleProduct/>
-
-    </div>
->>>>>>> 52a18f8169151b77cad4fb854ea2dde3028c480c
   );
 }
 
