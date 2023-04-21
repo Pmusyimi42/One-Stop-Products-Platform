@@ -1,6 +1,7 @@
 class AdminsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+  skip_before_action :authorized, only: [:create]
 
   
   def index
@@ -15,7 +16,7 @@ class AdminsController < ApplicationController
       def create
         @admin = Admin.create(admin_params)
         if @admin.valid?
-          @token = encode_token(admin_id: @admin.id)
+          @token = encode_token({admin_id: @admin.id})
           render json: { admin: AdminSerializer.new(@admin), jwt: @token }, status: :created
         else
           render json: { error: 'failed to create admin', errors: @admin.errors.full_messages }, status: :unprocessable_entity
