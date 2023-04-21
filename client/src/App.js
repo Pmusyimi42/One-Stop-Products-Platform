@@ -10,6 +10,7 @@ import Preview from './components/Preview';
 // import UserDetails from './components/UserDetails';
 import ProductList from './components/ProductList';
 import Dashboard from './components/Dashboard';
+import AddNewUser from './components/AddNewUser';
 
 function App() {
   return (
@@ -19,15 +20,12 @@ function App() {
           <Route index element={<Home />} />
           {/* authenticated users */}
           <Route path='/add_products' element={<AddProducts />} />
-
-          {/* <Route path='/add_products_form' element={<AddProductForm />} /> */}
           <Route path='/products_list' element={<ProductList />} />
-
-          <Route path='/preview' element={<Preview />} />
           <Route path='/single_product' element={<SingleProduct />} />
-
           <Route path='/dashboard' element={<Dashboard />} />
 
+
+          <Route path='/user_details' element={<UserDetails />} />
         </Route>
         <Route path='/login' element={<div>This is login page</div>} />
       </Routes>
