@@ -19,12 +19,14 @@ function App() {
     </BrowserRouter>
 =======
 import SingleProduct from './components/SingleProduct';
+import AddNewUser from './components/AddNewUser';
 
 function App() {
   return (
     <div className="App">
 
       <SingleProduct/>
+      <AddNewUser/>
 
     </div>
 >>>>>>> 52a18f8169151b77cad4fb854ea2dde3028c480c
