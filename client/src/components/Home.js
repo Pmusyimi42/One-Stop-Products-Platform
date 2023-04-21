@@ -1,9 +1,13 @@
 import React from 'react'
+import Navlink from './Navlink';
 
 function Home() {
   return (
     <div className='home'>
-      Home
+      <div>
+        <Navlink />
+      </div>
+      
     </div>
   )
 }
