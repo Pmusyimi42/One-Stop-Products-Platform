@@ -1,22 +1,25 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Layout from './components/layout/Layout';
 import Home from './components/Home';
 import UserDetails from './components/UserDetails';
+import SingleProduct from './components/SingleProduct';
+import Navbar from "./components/Navbar";
+import Products from "./pages/products";
 
-function App() {
+export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Layout />}>
-          <Route index element={<Home />} />
-          {/* authenticated users */}
-          <Route path='/user_details' element={<UserDetails />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <div className="App">
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/products" component={Products} />
+          <Route path="/singleproduct" component={SingleProduct} />
+          <Route path="/userdetails" component={UserDetails} />
+        </Switch>
+      </Router>
+    </div>
   );
 }
-
-export default App;
