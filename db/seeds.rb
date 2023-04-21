@@ -22,12 +22,12 @@ clothing = Category.create(name: "Clothing")
 books = Category.create(name: "Books")
 
 # Create Products
-iphone = Product.create(title: "iPhone", description: "A smartphone developed by Apple Inc.")
-ipad = Product.create(title: "iPad", description: "A line of tablet computers designed and marketed by Apple Inc.")
-macbook = Product.create(title: "MacBook Pro", description: "A line of Macintosh portable computers introduced in January 2006 by Apple Inc.")
-tshirt = Product.create(title: "T-shirt", description: "A style of unisex fabric shirt named after the T shape of its body and sleeves.")
-jeans = Product.create(title: "Jeans", description: "A type of pants or trousers, typically made from denim or dungaree cloth.")
-book1 = Product.create(title: "The Great Gatsby", description: "A novel by the American author F. Scott Fitzgerald.")
+iphone = Product.create(title: "iPhone", description: "A smartphone developed by Apple Inc.", imageUrl: "https://example.com/iphone.jpg", price: 999.99)
+ipad = Product.create(title: "iPad", description: "A line of tablet computers designed and marketed by Apple Inc.", imageUrl: "https://example.com/ipad.jpg", price: 799.99)
+macbook = Product.create(title: "MacBook Pro", description: "A line of Macintosh portable computers introduced in January 2006 by Apple Inc.", imageUrl: "https://example.com/macbook.jpg", price: 1499.99)
+tshirt = Product.create(title: "T-shirt", description: "A style of unisex fabric shirt named after the T shape of its body and sleeves.", imageUrl: "https://example.com/tshirt.jpg", price: 19.99)
+jeans = Product.create(title: "Jeans", description: "A type of pants or trousers, typically made from denim or dungaree cloth.", imageUrl: "https://example.com/jeans.jpg", price: 49.99)
+book1 = Product.create(title: "The Great Gatsby", description: "A novel by the American author F. Scott Fitzgerald.", imageUrl: "https://example.com/gatsby.jpg", price: 9.99)
 
 # Associate Products with Categories
 ProductCategory.create(product_id: iphone.id, category_id: electronics.id)
@@ -71,12 +71,12 @@ OrderItem.create(order_id: order2.id, product_id: book1.id, quantity: 3)
 
 
 # Associate Admins with Users
-AdminUser.create(admin_id: Admin.first.id, user_id: User.first.id)
-AdminUser.create(admin_id: Admin.first.id, user_id: User.second.id)
+# AdminUser.create(admin_id: Admin.first.id, user_id: User.first.id)
+# AdminUser.create(admin_id: Admin.first.id, user_id: User.second.id)
 
 # Create Payments
-payment1 = Payment.create(status: "paid", amount: 100.0, order_id: order1.id)
-payment2 = Payment.create(status: "paid", amount: 50.0, order_id: order2.id)
+payment1 = Payment.create(status: "Successful", amount: 100.0, order_id: order1.id)
+payment2 = Payment.create(status: "Successful", amount: 50.0, order_id: order2.id)
 
 
 puts "🌱Seeding done.🌱"
