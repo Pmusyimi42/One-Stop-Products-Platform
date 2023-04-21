@@ -1,0 +1,22 @@
+.permissions {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+}
+
+.form-row label {
+  flex: 1;
+  text-align: center;
+}
+
+.form-row input[type="checkbox"] {
+  flex: 1;
+}
