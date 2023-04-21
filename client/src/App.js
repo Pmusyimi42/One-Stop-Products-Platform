@@ -15,8 +15,8 @@ import ProductList from './components/ProductList';
 import Dashboard from './components/Dashboard';
 import AddNewUser from './components/AddNewUser';
 
-import LoginForm from "./LoginForm";
-import SignUpForm from "./SignUpForm";
+// import LoginForm from "./LoginForm";
+// import SignUpForm from "./SignUpForm";
 
 
 
@@ -34,8 +34,8 @@ export default function App() {
            <Route path='/add_products' element={<AddProducts />} />
           <Route path='/products_list' element={<ProductList />} />
           <Route path='/dashboard' element={<Dashboard />} />
-          <Route path="/login" element={<LoginForm />} />
-          <Route path="/signup" element={<SignUpForm />} />
+          {/* <Route path="/login" element={<LoginForm />} />
+          <Route path="/signup" element={<SignUpForm />} /> */}
 
 
           {/* <Route path='/user_details' element={<UserDetails />} /> */}
