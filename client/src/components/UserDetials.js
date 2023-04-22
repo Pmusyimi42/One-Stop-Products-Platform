@@ -40,11 +40,13 @@ function UserDetails() {
       fetch(`/users/${userId}`, {
         method: 'DELETE'
       })
-        .then(response => response.json())
-        .then(() => {
-          setUsers(prevUsers => prevUsers.filter(user => user.id !== userId));
-        })
-        .catch(error => console.error(error));
+        // .then(response => response.json())
+        // .then(() => {
+        //   // setUsers(prevUsers => prevUsers.filter(user => user.id !== userId));
+        // })
+        // .catch(error => console.error(error)); 
+         document.location.reload();
+
     }
 }
 
