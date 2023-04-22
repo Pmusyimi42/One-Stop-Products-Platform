@@ -33,6 +33,7 @@ export default function App() {
           {/* <Route path="/userdetails" component={UserDetails} /> */}
            <Route path='/add_products' element={<AddProducts />} />
           <Route path='/products_list' element={<ProductList />} />
+
           <Route path='/dashboard' element={<Dashboard />} />
           {/* <Route path="/login" element={<LoginForm />} />
           <Route path="/signup" element={<SignUpForm />} /> */}
