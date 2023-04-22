@@ -3,6 +3,7 @@ class ApplicationController < ActionController::API
 
     wrap_parameters format: []
     # before_action :authorize_user
+    # before_action :authorize_user
     rescue_from ActiveRecord::RecordNotFound, with: :response_not_found
     rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_entity_response
 
