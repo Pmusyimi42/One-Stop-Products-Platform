@@ -2,6 +2,7 @@ class ApplicationController < ActionController::API
 
 
     wrap_parameters format: []
+    # before_action :authorize_user
     rescue_from ActiveRecord::RecordNotFound, with: :response_not_found
     rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_entity_response
 
@@ -51,9 +52,8 @@ class ApplicationController < ActionController::API
 
     def unprocessable_entity_response(invalid)
         render json: { errors: invalid.record.errors}, status: :unprocessable_entity
-
-    before_action :authorized
-
+    end
+    
     def encode_token(payload)
         JWT.encode(payload, 'my_s3cr3t')
     
