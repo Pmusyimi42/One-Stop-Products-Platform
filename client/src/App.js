@@ -17,6 +17,9 @@ import AddNewUser from './components/AddNewUser';
 import UpdateProduct from "./components/UpdateProduct";
 import UserDetials from "./components/UserDetials";
 
+import LoginForm from "./LoginForm";
+import SignUpForm from "./SignUpForm";
+
 
 
 export default function App() {
@@ -34,6 +37,8 @@ export default function App() {
            <Route path='/editproduct' component={UpdateProduct} />
           <Route path='/products_list' component={ProductList} />
           <Route path='/dashboard' element={<Dashboard />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/signup" element={<SignUpForm />} />
 
 
           {/* <Route path='/user_details' element={<UserDetails />} /> */}
