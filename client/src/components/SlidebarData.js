@@ -36,5 +36,11 @@ export const SidebarData = [
     path: "/singleproduct",
     icon: <IoIcons.IoMdHelpCircle />,
     cName: "nav-text"
+  },
+  {
+    title: "Add product",
+    path: "/add_products",
+    icon: <IoIcons.IoMdHelpCircle />,
+    cName: "nav-text"
   }
 ];

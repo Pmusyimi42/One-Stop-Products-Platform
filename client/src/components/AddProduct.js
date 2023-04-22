@@ -1,34 +1,44 @@
 import React, { useState } from 'react';
 import { CgProfile } from 'react-icons/cg';
-import { Link, useNavigate } from 'react-router-dom';
+// import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import Preview from './Preview';
 import ProductList from './ProductList';
+import { useHistory} from "react-router-dom";
+
 
 function AddProducts() {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [price, setPrice] = useState();
   const [change, setOnChange] = useState(false)
+  const [showActions,setShowActions] = useState(false)
+  const history = useHistory();
+
 
 
   const handleImageUrlChange = (e) => {
     setImageUrl(e.target.value);
   };
 
-  const AddProduct = (title, description, imageUrl, price) =>{
-    fetch("/products",{
+
+    const AddProduct = (title, description, imageUrl, price) => {
+      const now = new Date().toISOString(); // get current time in ISO format
+      fetch("/products", {
         method: "POST",
-        headers:{
-            "Content-Type": "application/json"
+        headers: {
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            title, description, imageUrl, price
+          title,
+          description,
+          imageUrl,
+          price,
+          created_at: now // add created time to the JSON object
         })
-    }
-    )
+      })
     .then(res=>res.json())
     .then(response=>{
         console.log("add product ",response)
@@ -50,7 +60,7 @@ function AddProducts() {
                 showConfirmButton: false,
                 timer: 1500
               })
-              navigate('/products_list')
+              history.push('/products_list');
 
               setOnChange(!change)
              

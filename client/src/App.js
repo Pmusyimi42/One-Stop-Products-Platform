@@ -2,7 +2,7 @@ import React from "react";
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from './components/Home';
-import UserDetails from './components/UserDetails';
+// import UserDetails from './components/UserDetails';
 import SingleProduct from './components/SingleProduct';
 import Navbar from "./components/Navbar";
 import Products from "./pages/products";
@@ -14,6 +14,8 @@ import Preview from './components/Preview';
 import ProductList from './components/ProductList';
 import Dashboard from './components/Dashboard';
 import AddNewUser from './components/AddNewUser';
+import UpdateProduct from "./components/UpdateProduct";
+import UserDetials from "./components/UserDetials";
 
 
 
@@ -27,13 +29,14 @@ export default function App() {
           <Route path="/" exact component={Home} />
           <Route path="/products" component={Products} />
           <Route path="/singleproduct" component={SingleProduct} />
-          <Route path="/userdetails" component={UserDetails} />
-           <Route path='/add_products' element={<AddProducts />} />
-          <Route path='/products_list' element={<ProductList />} />
+          <Route path="/userdetails" component={UserDetials} />
+           <Route path='/add_products' component={AddProducts} />
+           <Route path='/editproduct' component={UpdateProduct} />
+          <Route path='/products_list' component={ProductList} />
           <Route path='/dashboard' element={<Dashboard />} />
 
 
-          <Route path='/user_details' element={<UserDetails />} />
+          {/* <Route path='/user_details' element={<UserDetails />} /> */}
         </Switch>
       </Router>
     </div>
