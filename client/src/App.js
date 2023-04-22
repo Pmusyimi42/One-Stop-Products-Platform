@@ -26,7 +26,7 @@ export default function App() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/products" component={Products} />
-          <Route path="/singleproduct" component={SingleProduct} />
+          <Route path="/product/:id" component={SingleProduct} />
           {/* <Route path="/userdetails" component={UserDetails} /> */}
            <Route path='/add_products' element={<AddProducts />} />
           <Route path='/products_list' element={<ProductList />} />
