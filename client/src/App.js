@@ -14,8 +14,8 @@ import AddProducts from './components/AddProduct';
 import ProductList from './components/ProductList';
 import Dashboard from './components/Dashboard';
 import AddNewUser from './components/AddNewUser';
-import EditProduct from "./components/EditProduct";
-import UserDetials from "./components/UserDetials";
+// import EditProduct from "./components/EditProduct";
+// import UserDetials from "./components/UserDetials";
 
 
 
@@ -29,7 +29,7 @@ export default function App() {
           <Route path="/" exact component={Home} />
           <Route path="/products" component={Products} />
           <Route path="/product_categories/:id" component={SingleProduct} />
-          {/* <Route path="/userdetails" component={UserDetails} /> */}
+          {/* {/* <Route path="/userdetails" component={UserDetails} /> */} */}
            <Route path='/add_products' element={<AddProducts />} />
           <Route path='/products_list' element={<ProductList />} />
 
