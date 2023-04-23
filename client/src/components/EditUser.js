@@ -26,7 +26,7 @@ function EditUser(props) {
   return (
     <div className='container'>
       <h2 className='p-2 text-lg font-semibold'>Edit User Details</h2>
-      <form onSubmit={handleSubmit} className='form-container items-center  flex flex-col mx-auto p-2 text-lg font-semibold'>
+      <form onSubmit={handleSubmit} className='form-container items-center  flex flex-col mx-auto p-2 text-lg font-semibold bg-zinc-200'>
         <label className='flex gap-2'>
           Name:
           <input type="text" className='rounded-lg text-base font-normal' value={name} onChange={(event) => setName(event.target.value)} />

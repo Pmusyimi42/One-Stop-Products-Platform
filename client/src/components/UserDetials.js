@@ -40,11 +40,7 @@ function UserDetails() {
       fetch(`/users/${userId}`, {
         method: 'DELETE'
       })
-        // .then(response => response.json())
-        // .then(() => {
-        //   // setUsers(prevUsers => prevUsers.filter(user => user.id !== userId));
-        // })
-        // .catch(error => console.error(error)); 
+        
          document.location.reload();
 
     }
@@ -53,11 +49,10 @@ function UserDetails() {
 
   return (
     <div className='flex flex-col p-2'>
-      <h1 className='text-3xl font-bold font-serif mx-auto'>User Credentials</h1>
+      <h1 className='text-3xl font-bold font-serif mx-auto'>User Details</h1>
       <p className='text-xl mx-auto mt-2'>Details regarding the various users</p>
       <table className='mx-4 mt-2'>
         <thead className='bg-zinc-100'>
-          <hr className='bg-red-600'/>
           <tr >
             <th>User No.</th>
             <th>Name</th>
@@ -65,6 +60,8 @@ function UserDetails() {
             <th>Role</th>
             <th>Actions</th>
           </tr>
+          <hr/>
+
         </thead>
         <tbody className='bg-zinc-100'>
           {users.map(user => (
