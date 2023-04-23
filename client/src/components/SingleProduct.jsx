@@ -1,26 +1,35 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react"
+import { useParams } from 'react-router-dom'
 import "./SingleProduct.css";
-
 export default function SingleProduct() {
   const [quantity, setQuantity] = useState(1);
-
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
   };
-
   const decrementQuantity = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
     }
   };
-
+  const{id}= useParams()
+  const [items, setItems]= useState(null)
+  useEffect(()=>{
+      fetch(`/product_categories/${id}`)
+      .then((r)=>r.json())
+      .then((post)=>{
+          setItems (post)
+      })
+  },[id])
   return (
-    <div id="container">
+    <>
+    {
+      items?
+      <div id="container">
       <div className="product-container">
-        <img src="https://shorturl.at/koAHP" alt="test" />
+        <img src={items.product.imageUrl} alt={items.product.title} />
         <div>
-          <h2 className="title">Air Jordan Sneakers | Flight Club</h2>
-          <h3>Price $ 50</h3>
+          <h2 className="title">{items.product.title}</h2>
+          <h3>{items.product.price}</h3>
           <div className="quantity">
             <span>Qty:</span>
             <button onClick={decrementQuantity}>-</button>
@@ -33,14 +42,12 @@ export default function SingleProduct() {
       <div className="description-container">
         <h2 className="description">Description</h2>
         <p>
-          Michael Jordan entered the NBA with the Chicago Bulls, taking over the league with graceful athleticism and a driving will to win. 
-          Starting his rookie year, the Air Jordan 1 featured both the Wings and Swoosh logo, and Nike Air cushioning underfoot. 
-          Subsequent models like the Air Jordan 3, Air Jordan 4 and Air Jordan 11 featured new technology and bold design, 
-          keeping the lineage relevant to each new generation. Since 1985, Air Jordans have transcended basketball, 
-          moving sneakers to the forefront of culture with new releases and colorways such as the Jordan 1 High 'Skyline,' 
-          Wmns Jordan 3 'Lucky Green' and Jordan 1 High 'Lucky Green.'
+        {items.product.description}
         </p>
       </div>
     </div>
+    :null
+  }
+    </>
   );
 }
