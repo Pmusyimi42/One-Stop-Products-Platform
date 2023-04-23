@@ -1,10 +1,15 @@
 import React from 'react'
 import { AiOutlineMenu } from "react-icons/ai";
+import IndividualIntervalsExample from './IndividualIntervalsExample';
+
+import './CategoriesFilter.css';
+
+
 
 function CategoriesFilter() {
   return (
     <div class="container-md">
-        <h1><AiOutlineMenu /> Categoris </h1>
+        <h1><AiOutlineMenu /> Categories </h1>
         <div>
         <table class="tabel">
         <thead>
@@ -12,9 +17,9 @@ function CategoriesFilter() {
             <th scope=""></th>
             </tr>
         </thead>
-        <tbody class="table">
+        <tbody class="table table-bordered">
             <tr>
-            <td>Electronics</td>
+            <td> Electronics</td>
             </tr>
             <tr>
             <td>Clothing</td>
@@ -33,8 +38,11 @@ function CategoriesFilter() {
             </tr>
         </tbody>
         </table>
- </div>
-</div>
+    </div>
+      <div>
+        <IndividualIntervalsExample />
+      </div>
+  </div>
 
   )
 }

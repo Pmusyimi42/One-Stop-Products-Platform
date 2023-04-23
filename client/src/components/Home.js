@@ -34,10 +34,12 @@ function Home() {
                 <hr/>
           </div>
        </div>
+       <section>
        <div>
           <CategoriesFilter />
-      </div> 
-       
+      </div>
+      </section> 
+     
       <div>
       <div className="row" id="content">
                 {

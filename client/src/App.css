@@ -11,6 +11,10 @@
   height: 500vh;
 }
 
+.carousel slide{
+   display: flex;
+   float: right;
+}
 
 
 /* img {

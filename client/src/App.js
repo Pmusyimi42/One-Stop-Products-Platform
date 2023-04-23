@@ -1,4 +1,5 @@
 import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from './components/Home';
@@ -15,8 +16,8 @@ import ProductList from './components/ProductList';
 import Dashboard from './components/Dashboard';
 import AddNewUser from './components/AddNewUser';
 
-// import LoginForm from "./LoginForm";
-// import SignUpForm from "./SignUpForm";
+// import LoginForm from "./components/LoginForm";
+// import SignUpForm from "./components/SignUpForm";
 
 
 
