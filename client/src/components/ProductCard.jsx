@@ -17,7 +17,7 @@ function ProductCard ({item,key}){
 
 <>
     
-    <div className="col-md-3 mb-4"  onClick={()=>{
+    <div className="col-md-3 mb-5"  onClick={()=>{
         history.push(`/product/${item.id}`) 
    }} onMouseEnter ={()=> setShowActions(true)} onMouseLeave ={()=> setShowActions(false)}>
    

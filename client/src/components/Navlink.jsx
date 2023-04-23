@@ -1,7 +1,12 @@
 import React from 'react'
 import './Navlink.css';
 import image from './images/shoplogo3.png'
+import { Link } from "react-router-dom";
 import { BsFillPeopleFill } from "react-icons/bs";
+import { BsBagCheckFill } from "react-icons/bs";
+
+
+
 
 function Navlink() {
   return (
@@ -19,6 +24,16 @@ function Navlink() {
           </div>
         </nav>  
       </div>
+      
+      <div className="create">
+          <Link to={"/signup"}><BsFillPeopleFill />Account</Link>
+      </div>
+
+      <div className="cart">
+          <Link to={"/signup"}><BsBagCheckFill />Cart</Link>
+      </div>
+
+      
     </div>
   )
 }

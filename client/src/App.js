@@ -1,4 +1,5 @@
 import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from './components/Home';
@@ -15,8 +16,8 @@ import ProductList from './components/ProductList';
 import Dashboard from './components/Dashboard';
 import AddNewUser from './components/AddNewUser';
 
-import LoginForm from "./LoginForm";
-import SignUpForm from "./SignUpForm";
+// import LoginForm from "./components/LoginForm";
+// import SignUpForm from "./components/SignUpForm";
 
 
 
@@ -33,9 +34,10 @@ export default function App() {
           {/* <Route path="/userdetails" component={UserDetails} /> */}
            <Route path='/add_products' element={<AddProducts />} />
           <Route path='/products_list' element={<ProductList />} />
+
           <Route path='/dashboard' element={<Dashboard />} />
-          <Route path="/login" element={<LoginForm />} />
-          <Route path="/signup" element={<SignUpForm />} />
+          {/* <Route path="/login" element={<LoginForm />} />
+          <Route path="/signup" element={<SignUpForm />} /> */}
 
 
           {/* <Route path='/user_details' element={<UserDetails />} /> */}

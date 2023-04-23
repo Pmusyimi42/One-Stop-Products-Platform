@@ -1,5 +1,7 @@
 import ProductCard from "../components/ProductCard";
 import React, {useState, useEffect} from "react";
+import Navlink from "../components/Navlink";
+
 
 
 export default function Products() {
@@ -19,7 +21,17 @@ export default function Products() {
 
   return (
     <div className="products">
-      <div className="row" id="content">
+      <div>
+       <Navlink />
+      </div>
+
+      <div className="row">
+          <div className="col-12 mt-5 mb-4">
+              <h1 className="display-6-fw-bolder text-center">Home</h1>
+                <hr/>
+          </div>
+       </div>
+      <div className="row">
                 {
                    items && items.map((item, index)=> {
                         return(
