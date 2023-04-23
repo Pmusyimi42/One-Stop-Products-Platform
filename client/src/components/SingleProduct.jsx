@@ -1,26 +1,35 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react"
+import { useParams } from 'react-router-dom'
 import "./SingleProduct.css";
-
-export default function SingleProduct({ title, description, price, imageUrl }) {
+export default function SingleProduct() {
   const [quantity, setQuantity] = useState(1);
-
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
   };
-
   const decrementQuantity = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
     }
   };
-
+  const{id}= useParams()
+  const [items, setItems]= useState(null)
+  useEffect(()=>{
+      fetch(`/product_categories/${id}`)
+      .then((r)=>r.json())
+      .then((post)=>{
+          setItems (post)
+      })
+  },[id])
   return (
-    <div id="container">
+    <>
+    {
+      items?
+      <div id="container">
       <div className="product-container">
-        <img src={imageUrl} alt={title} />
+        <img src={items.product.imageUrl} alt={items.product.title} />
         <div>
-          <h2 className="title">{title}</h2>
-          <h3>Price $ {price}</h3>
+          <h2 className="title">{items.product.title}</h2>
+          <h3>{items.product.price}</h3>
           <div className="quantity">
             <span>Qty:</span>
             <button onClick={decrementQuantity}>-</button>
@@ -32,8 +41,13 @@ export default function SingleProduct({ title, description, price, imageUrl }) {
       </div>
       <div className="description-container">
         <h2 className="description">Description</h2>
-        <p>{description}</p>
+        <p>
+        {items.product.description}
+        </p>
       </div>
     </div>
+    :null
+  }
+    </>
   );
 }
