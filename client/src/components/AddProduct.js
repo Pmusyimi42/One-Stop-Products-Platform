@@ -6,7 +6,7 @@ import Preview from './Preview';
 import ProductList from './ProductList';
 
 function AddProducts() {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState('');
@@ -50,7 +50,7 @@ function AddProducts() {
                 showConfirmButton: false,
                 timer: 1500
               })
-              navigate('/products_list')
+              // navigate('/products_list')
 
               setOnChange(!change)
              

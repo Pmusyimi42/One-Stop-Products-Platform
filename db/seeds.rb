@@ -17,9 +17,9 @@
 puts "🌱Seeding in process....🌱"
 
 # Create Admins
-admin1 = Admin.create(email: "admin1@example.com", password_digest: "password")
-admin2 = Admin.create(email: "pierramaken@gmail.com", password_digest: "pirra")
-admin3 = Admin.create(email: "danny@example.com", password_digest: "danny")
+admin1 = Admin.create(email: "admin1@example.com", password: "password")
+admin2 = Admin.create(email: "pierramaken@gmail.com", password: "pirra")
+admin3 = Admin.create(email: "danny@example.com", password: "danny")
 
 
 
@@ -34,10 +34,10 @@ perfume = Category.create(name: "Perfume")
 
 
 # Create Users
-user1 = User.create(name: "John Doe", email: "johndoe@example.com", password_digest: "password")
-user2 = User.create(name: "Jane Smith", email: "janesmith@example.com", password_digest: "queen")
-user3 = User.create(name: "Cisco Ramon ", email: "ciscoRamon@yahoo.com", password_digest: "cisco")
-user4 = User.create(name: "Adel Mutu", email: "mahretujulie@yahoo.com", password_digest: "adel")
+user1 = User.create(name: "John Doe", email: "johndoe@example.com", password: "password")
+user2 = User.create(name: "Jane Smith", email: "janesmith@example.com", password: "queen")
+user3 = User.create(name: "Cisco Ramon ", email: "ciscoRamon@yahoo.com", password: "cisco")
+user4 = User.create(name: "Adel Mutu", email: "mahretujulie@yahoo.com", password: "adel")
 
 
 # Create Products
