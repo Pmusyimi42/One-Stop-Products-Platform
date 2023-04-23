@@ -1,7 +1,7 @@
 class AdminsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-  skip_before_action :authorized, only: [:create]
+  # skip_before_action :authorized, only: [:create]
 
   
   def index
@@ -46,7 +46,7 @@ class AdminsController < ApplicationController
       end
   
       def admin_params
-        params.permit(:id, :email, :password_digest)
+        params.permit(:id, :email, :password)
      end
 
      def render_not_found_response

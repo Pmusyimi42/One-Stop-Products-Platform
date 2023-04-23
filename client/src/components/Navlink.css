@@ -1,0 +1,38 @@
+.container-fluid{
+    background-color:  #D9D9D9;
+}
+.nav{
+    background-color:  #D9D9D9;
+    display: flex;
+    margin-left: 30%;
+}
+
+img{
+    height: 18vh;
+    width: 35vh;
+    display: flex;
+    float: left;
+}
+
+.btn{
+    background-color: #F47458;
+}
+
+
+.create{
+    margin-bottom: 70px;
+    display: flex;
+    float: right;
+    font-size: x-large;
+    font-weight: 500;
+    margin-right: 50px;
+}
+
+.cart{
+    margin-bottom: 70px;
+    display: flex;
+    float: right;
+    font-size: x-large;
+    font-weight: 500;
+    margin-right: 80px;
+}
