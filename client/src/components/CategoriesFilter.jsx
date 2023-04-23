@@ -6,7 +6,19 @@ import './CategoriesFilter.css';
 
 
 
-function CategoriesFilter() {
+function CategoriesFilter({items, filterData}) {
+  const uniqueNumbers = items.map(item=>{
+    return item.category.name
+  })
+  const categoriesName = new Set(uniqueNumbers)
+  const uniqueNames = [...categoriesName]
+  
+  function handleFilters(e){
+    const valueName = e.target.textContent.toLowerCase()
+    //  console.log(valueName)
+     filterData(valueName)
+   }
+
   return (
     <div class="container-md">
         <h1><AiOutlineMenu /> Categories </h1>
@@ -18,7 +30,15 @@ function CategoriesFilter() {
             </tr>
         </thead>
         <tbody class="table table-bordered">
-            <tr>
+        {uniqueNames.map((item,index)=>{
+            return (
+                <tr key={index}>
+                    <td onClick={handleFilters}>{item}</td>
+                </tr>
+            )
+          })}
+
+            {/* <tr>
             <td> Electronics</td>
             </tr>
             <tr>
@@ -34,8 +54,8 @@ function CategoriesFilter() {
             <td>Furniture</td>
             </tr>
             <tr>
-            <td>Perfume</td>
-            </tr>
+            <td onClick={(e)=>alert("text")}>Perfume</td>
+            </tr> */}
         </tbody>
         </table>
     </div>

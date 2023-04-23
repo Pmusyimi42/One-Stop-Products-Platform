@@ -14,18 +14,16 @@ function ProductCard ({item,key}){
    
 
   return(
-
-<>
     
     <div className="col-md-3 mb-5"  onClick={()=>{
-        history.push(`/product/${item.id}`) 
+        history.push(`/product_categories/${item.id}`) 
    }} onMouseEnter ={()=> setShowActions(true)} onMouseLeave ={()=> setShowActions(false)}>
    
    <div className="card h-100 text-center p-4" key={item.id}>
-        <img src={item.imageUrl} className="card-img-top" alt={item.title} height="500px"/>
+        <img src={item.product.imageUrl} className="card-img-top" alt={item.product.title} height="500px"/>
          <div className="card-body">
-            <h5 className="card-title mb-0">{item.title}</h5>
-            <p className="card-text lead fw-bold">${item.price}</p>
+            <h5 className="card-title mb-0">{item.product.title}</h5>
+            <p className="card-text lead fw-bold">${item.product.price}</p>
          </div>
          <div className="card-body">
            {showActions? <p className="card-text" style={{marginTop:"5px"}}></p> :null}
@@ -57,7 +55,7 @@ function ProductCard ({item,key}){
 
        </div>
      </div>
-   </>
+   
   )
 }
 export default ProductCard
