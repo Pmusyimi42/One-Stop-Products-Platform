@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
-  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-  rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-  # skip_before_action :authorize_user, only: [:signup, :index, :show]
-
-
-     def index
+  #rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+  #rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+  # before_action :authorize_user
+  # skip_before_action :authorize_user, only: [:signup]
+    def index
         render json: User.all
       end
   
