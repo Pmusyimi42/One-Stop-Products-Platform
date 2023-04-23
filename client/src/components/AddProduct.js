@@ -130,12 +130,13 @@ function AddProducts() {
                 min='0'
                 step='1'
               />
-              <button className='flex mx-auto mt-8 py-3 bg-red-600 rounded-lg text-white font-semibold text-lg shadow-xl'
-                onClick={() => setOnChange(!change)}
-                disabled={!title || !description || !imageUrl || !price }
-                >
-                Add product to store
+              <button className={`flex mx-auto mt-8 py-3 bg-red-600 rounded-full p-2 text-white  ${!title || !description || !imageUrl || !price ? 'opacity-50 cursor-not-allowed' : 'hoverleft hover:bg-red-600 mx-2  hover:text-white hover:font-bold hover:text-xl text-white hover:rounded-full'}`}
+              onClick={() => setOnChange(!change)}
+              disabled={!title || !description || !imageUrl || !price}
+              >
+                  Add product to store
               </button>
+
             </form>
           </div>
         </div>
