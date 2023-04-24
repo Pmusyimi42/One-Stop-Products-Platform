@@ -28,15 +28,16 @@ export default function App() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/products" component={Products} />
-          <Route path="/singleproduct" component={SingleProduct} />
+
           <Route path="/userdetails" component={UserDetials} />
            <Route path='/add_products' component={AddProducts} />
            <Route path='/editproduct' component={EditProduct} />
           <Route path='/products_list' component={ProductList} />
+
+          <Route path="/product_categories/:id" component={SingleProduct} />
+
+
           <Route path='/dashboard' element={<Dashboard />} />
-
-
-          {/* <Route path='/user_details' element={<UserDetails />} /> */}
         </Switch>
       </Router>
     </div>

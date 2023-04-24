@@ -11,15 +11,23 @@ export default function SingleProduct() {
       setQuantity(quantity - 1);
     }
   };
+
+
   const{id}= useParams()
   const [items, setItems]= useState(null)
+
+
   useEffect(()=>{
       fetch(`/product_categories/${id}`)
       .then((r)=>r.json())
       .then((post)=>{
           setItems (post)
       })
+
+
   },[id])
+     
+
   return (
     <>
     {
@@ -49,5 +57,6 @@ export default function SingleProduct() {
     :null
   }
     </>
+
   );
 }
