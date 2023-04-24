@@ -1,22 +1,21 @@
 import React, { useState,useEffect } from "react"
 import { useParams } from 'react-router-dom'
 import "./SingleProduct.css";
-
 export default function SingleProduct() {
   const [quantity, setQuantity] = useState(1);
-
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
   };
-
   const decrementQuantity = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
     }
   };
 
+
   const{id}= useParams()
   const [items, setItems]= useState(null)
+
 
   useEffect(()=>{
       fetch(`/product_categories/${id}`)
@@ -25,9 +24,9 @@ export default function SingleProduct() {
           setItems (post)
       })
 
+
   },[id])
      
-   
 
   return (
     <>
@@ -58,6 +57,6 @@ export default function SingleProduct() {
     :null
   }
     </>
-    
+
   );
 }
