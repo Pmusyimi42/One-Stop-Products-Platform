@@ -52,7 +52,7 @@ function UserDetails() {
       <h1 className='text-3xl font-bold font-serif mx-auto'>User Details</h1>
       <p className='text-xl mx-auto mt-2'>Details regarding the various users</p>
       <table className='mx-4 mt-2'>
-        <thead className='bg-zinc-100'>
+        <thead className=''>
           <tr >
             <th>User No.</th>
             <th>Name</th>
@@ -60,8 +60,7 @@ function UserDetails() {
             <th>Role</th>
             <th>Actions</th>
           </tr>
-          <hr/>
-
+          {/* <hr/> */}
         </thead>
         <tbody className='bg-zinc-100'>
           {users.map(user => (

@@ -14,7 +14,7 @@ import Preview from './components/Preview';
 import ProductList from './components/ProductList';
 import Dashboard from './components/Dashboard';
 import AddNewUser from './components/AddNewUser';
-import UpdateProduct from "./components/UpdateProduct";
+import EditProduct from "./components/EditProduct";
 import UserDetials from "./components/UserDetials";
 
 
@@ -31,7 +31,7 @@ export default function App() {
           <Route path="/singleproduct" component={SingleProduct} />
           <Route path="/userdetails" component={UserDetials} />
            <Route path='/add_products' component={AddProducts} />
-           <Route path='/editproduct' component={UpdateProduct} />
+           <Route path='/editproduct' component={EditProduct} />
           <Route path='/products_list' component={ProductList} />
           <Route path='/dashboard' element={<Dashboard />} />
 
