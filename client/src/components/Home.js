@@ -6,26 +6,41 @@ import CategoriesFilter from "./CategoriesFilter";
 
 function Home() {
   const [items, setItems] = useState([])
+  const [search, setSearch] = useState("")
+  const [list, setList] = useState([])
+
+
   useEffect(() => {
-      fetch("/products")
+      fetch("/product_categories")
       .then((response)=> response.json())
       .then((data)=> {
-          setItems(data)
+        //  console.log(data[0].category.name)
+        //  console.log(data[0].product.imageUrl)
+
+        setItems(data)
       })
 
       window.scrollTo(0, 0)
 
   }, [])
 
+const searchItems = items.filter(item=>{
+  return item.product.title.toLowerCase().includes(search.toLowerCase())
+})
+function filterData(data){
+ const test= searchItems.filter(item=>{
 
+    return item.category.name.toLowerCase()=== data
   
-
-
+   })
+      setList(test)
+}
+console.log(list)
 
   return (
     <div className='home'>
       <div>
-        <Navlink />
+        <Navlink setSearch={setSearch} search={search}/>
       </div>
       
       <div className="row">
@@ -36,22 +51,25 @@ function Home() {
        </div>
        <section>
        <div>
-          <CategoriesFilter />
+          <CategoriesFilter items={items} searchItems={searchItems} filterData={filterData} />
       </div>
       </section> 
      
       <div>
       <div className="row" id="content">
-                {
-                   items && items.map((item, index)=> {
-                        return(
-                          
-                            // cannot use link tag twice with 2 onClicks since you will be directed to only command page. Therefore use the useHistory.
-                           <ProductCard key={index} item={item} />
-                        )
-                    })
-                }
-                
+
+            {
+        list.length > 0 ? (
+          list.map((item, index) => {
+            return <ProductCard key={index} item={item} />
+          })
+        ) : (
+          searchItems.map((item, index) => {
+            return <ProductCard key={index} item={item} />
+          })
+        )
+      }
+               
        </div>
        </div>
 
