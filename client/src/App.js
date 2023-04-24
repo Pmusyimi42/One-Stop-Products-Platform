@@ -1,5 +1,4 @@
 import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from './components/Home';
@@ -15,9 +14,8 @@ import Preview from './components/Preview';
 import ProductList from './components/ProductList';
 import Dashboard from './components/Dashboard';
 import AddNewUser from './components/AddNewUser';
-
-// import LoginForm from "./components/LoginForm";
-// import SignUpForm from "./components/SignUpForm";
+import EditProduct from "./components/EditProduct";
+import UserDetials from "./components/UserDetials";
 
 
 
@@ -30,17 +28,16 @@ export default function App() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/products" component={Products} />
+
+          <Route path="/userdetails" component={UserDetials} />
+           <Route path='/add_products' component={AddProducts} />
+           <Route path='/editproduct' component={EditProduct} />
+          <Route path='/products_list' component={ProductList} />
+
           <Route path="/product_categories/:id" component={SingleProduct} />
-          {/* <Route path="/userdetails" component={UserDetails} /> */}
-           <Route path='/add_products' element={<AddProducts />} />
-          <Route path='/products_list' element={<ProductList />} />
+
 
           <Route path='/dashboard' element={<Dashboard />} />
-          {/* <Route path="/login" element={<LoginForm />} />
-          <Route path="/signup" element={<SignUpForm />} /> */}
-
-
-          {/* <Route path='/user_details' element={<UserDetails />} /> */}
         </Switch>
       </Router>
     </div>

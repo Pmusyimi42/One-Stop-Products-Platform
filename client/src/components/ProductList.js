@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import {useHistory } from 'react-router-dom';
+import EditProduct from './EditProduct';
 
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -7,28 +8,29 @@ function ProductList() {
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const history = useHistory()
+  const [showActions,setShowActions] = useState(false)
+  const [editProductId, setEditProductId] = useState(false);
+
+
 
   useEffect(() => {
-    async function fetchProducts() {
-      try {
-        const response = await fetch(`/products?page=${currentPage}&perPage=5`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-        const data = await response.json();
+    setLoading(true);
+    fetch(`/products?_page=${currentPage}&perPage=5&sort=-createdAt`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
         setProducts(data);
         setTotalPages(data.totalPages);
+        setCurrentPage(1); // Reset currentPage to 1 after fetching sorted products
         setLoading(false);
-      } catch (error) {
-        setError(error);
-        setLoading(false);
-      }
-    }
-
-    fetchProducts();
-  }, [currentPage]);
+      })
+      .catch(error => console.log(error))
+  }, []);
 
   function handlePrevPage() {
     setCurrentPage(prevPage => prevPage - 1);
@@ -37,35 +39,108 @@ function ProductList() {
   function handleNextPage() {
     setCurrentPage(prevPage => prevPage + 1);
   }
+  const handleUpdateProduct = (productId, title, description, imageUrl, price) => {
+    const productToUpdate = { title, description, imageUrl, price };
+    fetch(`/products/${productId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(productToUpdate),
+    })
+      .then((response) => response.json())
+      .then((updatedProduct) => {
+        setProducts((prevProducts) =>
+          prevProducts.map((product) =>
+            product.id === updatedProduct.id ? updatedProduct : product
+          )
+        );
+        setEditProductId(false);
+      })
+      .catch((error) => console.error(error));
+  };
 
-  if (loading) {
-    return <div className="p-4">Loading products...</div>;
+  const handleEditProduct = (productId) => {
+    setEditProductId(productId);
+  };
+
+  const handleMouseEnter = () => {
+    setShowActions(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowActions(false);
+  };
+
+  function handleDelete(product) {
+    if (window.confirm("Are you sure you want to delete?")) {
+      fetch(`/products/${product.id}`, {
+        method: 'DELETE',
+      })
+      .then(response => {
+        if (response.ok) {
+          setProducts(prevProducts => prevProducts.filter(p => p.id !== product.id));
+        } else {
+          console.log('Error deleting product');
+        }
+      })
+      .catch(error => {
+        console.log(error);
+        alert('Failed to delete product');
+      });
+    }
   }
-
-  if (error) {
-    return <div className="p-4">Error loading products: {error.message}</div>;
-  }
-
-  if (!products || !products.length) {
-    return <div className="p-4">No products found</div>;
-  }
-
+  
+  
+ 
   return (
-    <div className="p-2 overflow-x-scroll  h-screen">
-      {products.map(product => (
-        <div key={product.id} className="bg-zinc-200  rounded-lg shadow-md p-2 mb-4">
-          <img className="h-48 w-48" src={product.imageUrl} alt={product.name}/>
-          <h1 className="text-xl font-bold mb-2">{product.name}</h1>
-          <p className="text-gray-700 mb-2">Price: ${product.price}</p>
-          <p className="text-gray-700 mb-2">{product.description}</p>
-          <Link to='/preview'>
-            <button className="bg-red-600 mx-2 rounded-lg p-2 text-white">Preview</button>
-          </Link>
-          <button className="bg-red-600 mx-2 rounded-lg p-2 text-white">Add to Cart</button>
-          <button className="bg-red-600 mx-2 rounded-lg p-2 text-white">Delete Product</button>
+    
 
-        </div>
-      ))}
+    <div className="p-2 overflow-x-scroll  h-screen">
+    {loading && <div className="p-4">Loading products...</div>}
+    {error && <div className="p-4">Error loading products: {error}</div>}
+    {!loading && !products.length && <div className="p-4">No products found</div>}<div>
+      {products.map(product => (
+         <div key={product.id} className=" flex flex-col bg-zinc-300 hover:bg-zinc-100 hover:font-semibold  rounded-lg shadow-md p-2 mb-4" onMouseEnter={handleMouseEnter}
+         onMouseLeave={handleMouseLeave}>
+          <img className="h-24 w-24" src={product.imageUrl} alt={product.name}/>
+          <h1 className="text-xl font-bold mb-2">{product.title}</h1>
+          <p className="font-semibold mb-2">Price: <span className='text-red-600'>${product.price}</span></p>
+          <p className="text-gray-700 font-light mb-2">{product.description}</p>
+              {showActions && (
+                <div className=''>
+                  <button className="hoverleft hover:bg-red-600 mx-2 rounded-lg p-2 hover:text-white" onClick={(e)=>{
+                      e.stopPropagation()
+                      history.push(`/products/${product.id}`)
+                  }}>
+                      View
+                  </button> 
+                  <button className="hoverleft hover:bg-red-600 mx-2 rounded-lg p-2 hover:text-white" onClick={(e)=>
+                    handleDelete(product)
+                  }>
+                    Delete
+                  </button>  
+                  <button className="hoverleft hover:bg-green-600 mx-2 rounded-lg p-2 hover:text-white" onClick={()=>handleEditProduct(product.id)}>
+                    Update
+                  </button>
+                </div>
+
+              )}
+              <div>
+              {editProductId &&
+                <EditProduct
+                  productId={editProductId}
+                  onUpdate={handleUpdateProduct}
+                  onCancel={() => setEditProductId(null)}
+                />
+              }
+            </div>
+          </div>
+
+          ))
+          }
+
+      </div>
       <div className="flex justify-between">
         <button
           className={`bg-gray-200 rounded-md px-4 py-2 ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-300'}`}
