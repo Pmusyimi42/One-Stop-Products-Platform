@@ -1,17 +1,17 @@
 # seeds.rb
 
-# AdminProduct.destroy_all
-# AdminUser.destroy_all
-# Admin.destroy_all
-# CartItem.destroy_all
-# Cart.destroy_all
-# Category.destroy_all
-# OrderItem.destroy_all
-# Order.destroy_all
-# Payment.destroy_all
-# ProductCategory.destroy_all
-# Product.destroy_all
-# User.destroy_all
+AdminProduct.destroy_all
+AdminUser.destroy_all
+Admin.destroy_all
+CartItem.destroy_all
+Cart.destroy_all
+Category.destroy_all
+OrderItem.destroy_all
+Order.destroy_all
+Payment.destroy_all
+ProductCategory.destroy_all
+Product.destroy_all
+User.destroy_all
 
 
 puts "🌱Seeding in process....🌱"
