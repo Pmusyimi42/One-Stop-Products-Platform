@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 // ICONS
 import * as FaIcons from "react-icons/fa"; //Now i get access to all the icons
@@ -10,6 +10,9 @@ import { IconContext } from "react-icons";
 
 import { Link } from "react-router-dom";
 
+import { NavLink } from 'react-router-dom';
+// import logo from "../images/logo.png"
+
 // DATA FILE
 import { SidebarData } from "./SlidebarData";
 
@@ -18,6 +21,7 @@ import "./Navbar.css";
 
 export default function Navbar() {
   const [sidebar, setSidebar] = useState(false);
+  // const navRef = useRef()
 
   const showSidebar = () => setSidebar(!sidebar);
 
@@ -50,6 +54,14 @@ export default function Navbar() {
             })}
           </ul>
         </nav>
+        <div className='flex justify-end flex-grow gap-3 mt-3'>
+        {<>
+          <NavLink className="hover:text-red-400" to="/login">Login</NavLink>
+          <NavLink className="hover:text-red-400" to="/signup">Sign Up</NavLink>
+                    
+          </>
+        }
+        </div>
       </IconContext.Provider>
     </>
   );

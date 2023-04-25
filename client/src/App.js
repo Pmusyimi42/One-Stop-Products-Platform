@@ -16,7 +16,7 @@ import ProductList from './components/ProductList';
 import Dashboard from './components/Dashboard';
 import AddNewUser from './components/AddNewUser';
 import EditProduct from "./components/EditProduct";
-import UserDetials from "./components/UserDetials";
+import UserDetials from "./components/UserDetails";
 import AdminSection from "./components/AdminSection";
 // import EditProduct from "./components/EditProduct";
 // import UserDetials from "./components/UserDetials";
