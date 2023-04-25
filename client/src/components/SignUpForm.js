@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import './SignUpForm.css';
+// import { Link } from "react-router-dom";
+
+
 
 function SignUpForm() {
   const [name, setName] = useState("");
@@ -32,15 +35,19 @@ function SignUpForm() {
       password_confirmation: e.target.password_confirmation.value,
     };
 
-    // fetch("/users", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(formData),
-    // })
-    fetch("/users")
+    fetch("/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    })
+   
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+        setName('');
+        setEmail('');
+        setPassword('');
+        setPasswordConfirmation('');
       })
       .catch((error) => {
         console.error(error);
@@ -48,6 +55,8 @@ function SignUpForm() {
   };
 
   return (
+    
+
     <form onSubmit={handleSubmit}>
       <label htmlFor="name">Name</label>
       <input
@@ -87,6 +96,7 @@ function SignUpForm() {
 
       <button type="submit">Sign Up</button>
     </form>
+    
   );
 }
 

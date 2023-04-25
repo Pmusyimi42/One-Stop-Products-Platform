@@ -55,12 +55,12 @@ export default function Navbar() {
           </ul>
         </nav>
         <div className='flex justify-end flex-grow gap-3 mt-3'>
-        {<>
+        {/* {<>
           <NavLink className="hover:text-red-400" to="/login">Login</NavLink>
           <NavLink className="hover:text-red-400" to="/signup">Sign Up</NavLink>
                     
           </>
-        }
+        } */}
         </div>
       </IconContext.Provider>
     </>

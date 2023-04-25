@@ -8,6 +8,8 @@ import Navbar from "./components/Navbar";
 import Products from "./pages/products";
 import About from "./pages/About";
 
+import SignUpForm from "./components/SignUpForm";
+
 import AddProducts from './components/AddProduct';
 // import Preview from './components/Preview';
 // import AddProductForm from './components/AddProductForm';
@@ -38,7 +40,7 @@ export default function App() {
            <Route path='/editproduct' component={EditProduct} />
           <Route path='/products_list' component={ProductList} />
           <Route path='/adminsection' component={AdminSection} />
-
+          <Route path='/signup' component={SignUpForm} />
 
           <Route path="/products" component={Products} />
           <Route path="/about" component={About} />
