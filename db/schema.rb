@@ -10,12 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2023_04_24_232304) do
+ActiveRecord::Schema.define(version: 2023_04_24_223932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
 
   create_table "admin_products", force: :cascade do |t|
     t.bigint "admin_id", null: false
@@ -91,8 +89,7 @@ ActiveRecord::Schema.define(version: 2023_04_24_232304) do
     t.boolean "create"
     t.boolean "edit"
     t.boolean "view"
-    t.boolean "remove"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_permissions_on_user_id"

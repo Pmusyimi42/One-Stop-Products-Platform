@@ -6,7 +6,7 @@ class CreatePermissions < ActiveRecord::Migration[6.1]
       t.boolean :create
       t.boolean :edit
       t.boolean :view
-      # t.boolean :delete
+      t.boolean :delete
       t.references :user, null: false, foreign_key: true
 
       t.timestamps
