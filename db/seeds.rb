@@ -34,10 +34,10 @@ perfume = Category.create(name: "Perfume")
 
 
 # Create Users
-user1 = User.create(name: "John Doe", email: "johndoe@example.com", password: "password")
-user2 = User.create(name: "Jane Smith", email: "janesmith@example.com", password: "queen")
-user3 = User.create(name: "Cisco Ramon ", email: "ciscoRamon@yahoo.com", password: "cisco")
-user4 = User.create(name: "Adel Mutu", email: "mahretujulie@yahoo.com", password: "adel")
+user1 = User.create(name: "John Doe", email: "johndoe@example.com", password_digest: "pissword")
+user2 = User.create(name: "Jane Smith", email: "janesmith@example.com", password_digest: "queen")
+user3 = User.create(name: "Cisco Ramon ", email: "ciscoRamon@yahoo.com", password_digest: "cisco")
+user4 = User.create(name: "Adel Mutu", email: "mahretujulie@yahoo.com", password_digest: "adel")
 
 
 # Create Products

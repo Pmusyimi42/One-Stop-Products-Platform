@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CgProfile } from 'react-icons/cg';
-// import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 // import Preview from './Preview';
 import ProductList from './ProductList';
@@ -8,6 +8,7 @@ import { useHistory} from "react-router-dom";
 
 
 function AddProducts() {
+  // const navigate = useNavigate()
   // const navigate = useNavigate()
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -60,7 +61,7 @@ function AddProducts() {
                 showConfirmButton: false,
                 timer: 1500
               })
-              history.push('/products_list');
+              // navigate('/products_list')
 
               setOnChange(!change)
              
