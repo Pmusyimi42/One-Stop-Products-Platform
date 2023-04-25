@@ -14,7 +14,7 @@ function Navlink({search, setSearch}) {
       <div>
         <img src={image}/>
       </div>
-      <div className='nav mt-4'>
+      <div className='nav mt-5'>
         <nav className="navba">
           <div className="container-fluid">
           <form className="d-flex" role="search">
@@ -26,11 +26,14 @@ function Navlink({search, setSearch}) {
       </div>
       
       <div className="create">
-          <Link to={"/signup"}><BsFillPeopleFill />Account</Link>
+        <Link to={"/signup"} style={{ color: "black" }}>
+          <BsFillPeopleFill />
+            Account
+         </Link>
       </div>
-
+      
       <div className="cart">
-          <Link to={"/signup"}><BsBagCheckFill />Cart</Link>
+          <Link to={"/signup"} style={{ color: "black" }}><BsBagCheckFill />Cart</Link>
       </div>
 
       
