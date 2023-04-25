@@ -15,6 +15,9 @@ import AddProducts from './components/AddProduct';
 import ProductList from './components/ProductList';
 import Dashboard from './components/Dashboard';
 import AddNewUser from './components/AddNewUser';
+import EditProduct from "./components/EditProduct";
+import UserDetials from "./components/UserDetials";
+import AdminSection from "./components/AdminSection";
 // import EditProduct from "./components/EditProduct";
 // import UserDetials from "./components/UserDetials";
 
@@ -28,15 +31,21 @@ export default function App() {
         <Navbar />
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/products" component={Products} />
+
+
+          <Route path="/userdetails" component={UserDetials} />
+           <Route path='/add_products' component={AddProducts} />
+           <Route path='/editproduct' component={EditProduct} />
+          <Route path='/products_list' component={ProductList} />
+          <Route path='/adminsection' component={AdminSection} />
+
+
           <Route path="/products" component={Products} />
           <Route path="/about" component={About} />
 
          
+
           <Route path="/product_categories/:id" component={SingleProduct} />
-          {/* {/* <Route path="/userdetails" component={UserDetails} /> */} */}
-           <Route path='/add_products' element={<AddProducts />} />
-          <Route path='/products_list' element={<ProductList />} />
 
           <Route path='/dashboard' element={<Dashboard />} />
         </Switch>

@@ -14,7 +14,7 @@ function AddProducts() {
   const [imageUrl, setImageUrl] = useState('');
   const [price, setPrice] = useState();
   const [change, setOnChange] = useState(false)
-  const [showActions,setShowActions] = useState(false)
+  // const [showActions,setShowActions] = useState(false)
   const history = useHistory();
 
 
@@ -90,7 +90,7 @@ function AddProducts() {
 
   return (
     <div className='bg-zinc-300 mx-auto min-h-[80vh] flex flex-col'>
-      <h1 className='mx-4 mt-2 text-3xl font-bold'>Add New Product</h1>
+      <h1 className='mx-auto mt-2 text-3xl font-bold'>Add New Product</h1>
       <div className='grid grid-cols-2 mt-2 mx-auto py-2 gap-2'>
         <div className='flex flex-col bg-zinc-200 shadow-xl min-h-[80vh]'>
           <p className='mx-auto mt-2 text-base'>Base information</p>
@@ -131,7 +131,7 @@ function AddProducts() {
                 step='1'
               />
               <button className={`flex mx-auto mt-8 py-3 bg-red-600 rounded-full p-2 text-white  ${!title || !description || !imageUrl || !price ? 'opacity-50 cursor-not-allowed' : 'hoverleft hover:bg-red-600 mx-2  hover:text-white hover:font-bold hover:text-xl text-white hover:rounded-full'}`}
-              onClick={() => setOnChange(!change)}
+              onClick={() => setOnChange(change)}
               disabled={!title || !description || !imageUrl || !price}
               >
                   Add product to store

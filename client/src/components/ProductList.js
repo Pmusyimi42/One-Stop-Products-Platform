@@ -97,6 +97,7 @@ function ProductList() {
     
 
     <div className="p-2 overflow-x-scroll  h-screen">
+      <p>Products Preview</p>
     {loading && <div className="p-4">Loading products...</div>}
     {error && <div className="p-4">Error loading products: {error}</div>}
     {!loading && !products.length && <div className="p-4">No products found</div>}<div>

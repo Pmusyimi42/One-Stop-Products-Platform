@@ -8,11 +8,14 @@ export default function Orders() {
 
   useEffect(() => {
     let url = '/orders';
-    if (statusFilter) {
-      url += `?status=${statusFilter}`;
-    }
-    if (dateFilter) {
-      url += `${statusFilter ? '&' : '?'}date=${dateFilter}`;
+    if (statusFilter || dateFilter) {
+      url += '?';
+      if (statusFilter) {
+        url += `status=${statusFilter}&`;
+      }
+      if (dateFilter) {
+        url += `date=${dateFilter}&`;
+      }
     }
     fetch(url)
       .then(response => response.json())
@@ -20,7 +23,20 @@ export default function Orders() {
   }, [statusFilter, dateFilter]);
 
   const renderOrdersTable = () => {
-    return orders.map((order) => (
+    if (!Array.isArray(orders)) {
+      return null;
+    }
+    return orders.filter((order) => {
+      if (statusFilter && dateFilter) {
+        return order.payment.status === statusFilter && order.created_at.slice(0, 10) === dateFilter;
+      } else if (statusFilter) {
+        return order.payment.status === statusFilter;
+      } else if (dateFilter) {
+        return order.created_at.slice(0, 10) === dateFilter;
+      } else {
+        return true;
+      }
+    }).map((order) => (
       <tr key={order.id}>
         <td>{order.created_at.slice(0, 10)}</td>
         <td>{order.id}</td>
@@ -30,6 +46,7 @@ export default function Orders() {
       </tr>
     ));
   };
+  
 
   const handleStatusFilterChange = (e) => {
     setStatusFilter(e.target.value);
@@ -39,8 +56,7 @@ export default function Orders() {
     setDateFilter(e.target.value);
   };
 
-  const netSales = orders.reduce((acc, order) => acc + Number(order.payment.amount), 0).toFixed(2);
-
+  const netSales = orders.length ? orders.reduce((acc, order) => acc + Number(order.payment.amount), 0).toFixed(2) : 0;
 
   return (
     <div className="orders-container">
@@ -90,7 +106,7 @@ export default function Orders() {
           </thead>
           <tbody>{renderOrdersTable()}</tbody>
         </table>
-      </div>
+        </div>
     </div>
   );
 }

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import AssignRoleForm from './AssignRoleForm'
+
 
 function EditUser(props) {
   const [name, setName] = useState('');
@@ -40,7 +42,7 @@ function EditUser(props) {
         <label className='flex gap-2 '>
         Role:
         <select value={role} onChange={(event) => setRole(event.target.value)} className='rounded-lg text-base font-normal'>
-          <option value="user">User</option>
+          <option value="user">Seller</option>
           <option value="admin">Admin</option>
         </select>
       </label>
@@ -54,6 +56,8 @@ function EditUser(props) {
             <button type="submit" className='rounded-lg hover:bg-red-600 hover:text-white hover:font-semibold'>Save</button>
             <button type="button" className='rounded-lg hover:bg-red-600 hover:text-white hover:font-semibold' onClick={props.onCancel}>Cancel</button>
         </div>
+        <AssignRoleForm />
+
       </form>
     </div>
   );

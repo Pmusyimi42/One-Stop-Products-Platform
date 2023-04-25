@@ -11,6 +11,12 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
+ActiveRecord::Schema.define(version: 2023_04_24_232304) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+
   create_table "admin_products", force: :cascade do |t|
     t.bigint "admin_id", null: false
     t.bigint "product_id", null: false
@@ -79,6 +85,19 @@
     t.index ["order_id"], name: "index_payments_on_order_id"
   end
 
+  create_table "permissions", force: :cascade do |t|
+    t.string "role"
+    t.boolean "access"
+    t.boolean "create"
+    t.boolean "edit"
+    t.boolean "view"
+    t.boolean "remove"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_permissions_on_user_id"
+  end
+
   create_table "product_categories", force: :cascade do |t|
     t.bigint "product_id", null: false
     t.bigint "category_id", null: false
@@ -111,6 +130,7 @@
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "payments", "orders"
+  add_foreign_key "permissions", "users"
   add_foreign_key "product_categories", "categories"
   add_foreign_key "product_categories", "products"
 end

@@ -4,6 +4,7 @@
 
 Rails.application.routes.draw do
 
+  resources :permissions
   #get 'sessions/new'
   #get 'sessions/create'
   #get 'sessions/destroy'
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :admins
   resources :users
+  resources :permissions
 
   # namespace :api do
   #   namespace :v1 do
