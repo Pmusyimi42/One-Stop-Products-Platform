@@ -1,49 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import './AssignRoleForm.css';
 
-export default function AddAdminForm() {
-  const [adminPermissions, setAdminPermissions] = useState({
+export default function AssignRoleForm({ currentUser }) {
+  const [permissions, setPermissions] = useState({
     access: false,
     create: false,
     edit: false,
     view: false,
-    delete: false,
-  });
-
-  const [sellerPermissions, setSellerPermissions] = useState({
-    access: false,
-    create: false,
-    edit: false,
-    view: false,
-    delete: false,
+    remove: false
   });
 
   useEffect(() => {
     fetch('/permissions')
       .then((response) => response.json())
       .then((data) => {
-        const admin = data.find((item) => item.role === 'admin');
-        const seller = data.find((item) => item.role === 'seller');
-        if (admin) {
-          setAdminPermissions(admin.permissions);
-        }
-        if (seller) {
-          setSellerPermissions(seller.permissions);
+        const userPermissions = data.find((item) => item.role === currentUser);
+        if (userPermissions) {
+          setPermissions(userPermissions.permissions);
         }
       });
-  }, []);
+  }, [currentUser]);
 
-  const handleAdminPermissionChange = (event) => {
+  const handlePermissionChange = (event) => {
     const { name, checked } = event.target;
-    setAdminPermissions((prevState) => ({
-      ...prevState,
-      [name]: checked,
-    }));
-  };
-
-  const handleSellerPermissionChange = (event) => {
-    const { name, checked } = event.target;
-    setSellerPermissions((prevState) => ({
+    setPermissions((prevState) => ({
       ...prevState,
       [name]: checked,
     }));
@@ -51,11 +31,11 @@ export default function AddAdminForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const adminPermissionsData = { role: 'admin', ...adminPermissions };
-    const sellerPermissionsData = { role: 'seller', ...sellerPermissions };
-    
+    const permissionsData = { userId: currentUser.id, role: currentUser.role, ...permissions };
+    console.log('Submitting permissions data:', permissionsData); // Log the data being sent to the server
+
     const createPermission = (permissionData) => {
-      fetch('/permissions', {
+      fetch(`/permissions/${currentUser.id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -67,8 +47,7 @@ export default function AddAdminForm() {
         .catch(error => console.error('Error creating permission:', error));
     };
   
-    createPermission(adminPermissionsData);
-    createPermission(sellerPermissionsData);
+    createPermission(permissionsData);
   };
 
   return (
@@ -84,72 +63,38 @@ export default function AddAdminForm() {
           <label>Delete</label>
         </div>
         <div>
-          <label>Admin</label>
+          <label>{currentUser}</label>
           <input
             type="checkbox"
             name="access"
-            checked={adminPermissions.access}
-            onChange={handleAdminPermissionChange}
+            checked={permissions.access}
+            onChange={handlePermissionChange}
           />
           <input
             type="checkbox"
             name="create"
-            checked={adminPermissions.create}
-            onChange={handleAdminPermissionChange}
+            checked={permissions.create}
+            onChange={handlePermissionChange}
           />
           <input
             type="checkbox"
             name="edit"
-            checked={adminPermissions.edit}
-            onChange={handleAdminPermissionChange}
+            checked={permissions.edit}
+            onChange={handlePermissionChange}
           />
           <input
             type="checkbox"
             name="view"
-            checked={adminPermissions.view}
-            onChange={handleAdminPermissionChange}
+            checked={permissions.view}
+            onChange={handlePermissionChange}
           />
           <input
             type="checkbox"
-            name="delete"
-            checked={adminPermissions.delete}
-            onChange={handleAdminPermissionChange}
+            name="remove"
+            checked={permissions.remove}
+            onChange={handlePermissionChange}
           />
         </div>
-        <div>
-          <label>Seller</label>
-          <input
-            type="checkbox"
-            name="access"
-            checked={sellerPermissions.access}
-            onChange={handleSellerPermissionChange}
-          />
-          <input
-            type="checkbox"
-            name="create"
-            checked={sellerPermissions.create}
-            onChange={handleSellerPermissionChange}
-          />
-          <input
-            type="checkbox"
-            name="edit"
-            checked={sellerPermissions.edit}
-            onChange={handleSellerPermissionChange}
-          />
-          <input
-            type="checkbox"
-            name="view"
-            checked={sellerPermissions.view}
-            onChange={handleSellerPermissionChange}
-          />
-          <input
-            type="checkbox"
-            name="delete"
-            checked={sellerPermissions.delete}
-            onChange={handleSellerPermissionChange}
-          />
-        </div>
-        <button type="submit">Submit</button>
       </form>
     </div>
   );

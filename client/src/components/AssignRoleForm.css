@@ -1,22 +1,25 @@
-.permissions {
-  margin: 0 auto;
-  max-width: 600px;
-}
-
-.form-container {
+.permissions div {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  margin-bottom: 8px;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.form-row {
-  display: flex;
+.permissions div:first-of-type {
+  margin-bottom: 16px;
 }
 
-.form-row label {
-  flex: 1;
-  text-align: center;
+.permissions div:last-of-type {
+  margin-top: 16px;
 }
 
-.form-row input[type="checkbox"] {
-  flex: 1;
+.permissions label {
+  flex-basis: 25%; /* add this line */
 }
+
+.permissions input[type="checkbox"] {
+  margin-left: 8px;
+  flex-basis: 15%; /* add this line */
+}
+

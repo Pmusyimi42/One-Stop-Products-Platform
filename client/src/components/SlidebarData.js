@@ -24,9 +24,15 @@ export const SidebarData = [
 //     icon: <FaIcons.FaCartPlus />,
 //     cName: "nav-text"
 //   },
+  // {
+  //   title: "User Details",
+  //   path: "/userdetails",
+  //   icon: <IoIcons.IoIosPaper />,
+  //   cName: "nav-text"
+  // },
   {
-    title: "User Details",
-    path: "/userdetails",
+    title: "Admin Section",
+    path: "/adminsection",
     icon: <IoIcons.IoIosPaper />,
     cName: "nav-text"
   },
@@ -36,13 +42,13 @@ export const SidebarData = [
     path: "/singleproduct",
     icon: <IoIcons.IoMdHelpCircle />,
     cName: "nav-text"
-  },
-  {
-    title: "Add product",
-    path: "/add_products",
-    icon: <IoIcons.IoMdHelpCircle />,
-    cName: "nav-text"
   }
+  // {
+  //   title: "Add product",
+  //   path: "/add_products",
+  //   icon: <IoIcons.IoMdHelpCircle />,
+  //   cName: "nav-text"
+  // }
 
   
 ];

@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
     def index
-        render json: Order.all
+        render json: Order.includes(:user, :payment).all, include: [:user, :payment]
     end
 
     def show
