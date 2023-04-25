@@ -37,7 +37,7 @@ class ProductsController < ApplicationController
     private
 
     def product_params
-        params.permit(:title, :description, :price, :imageUrl)
+        params.permit(:id, :title, :description, :price, :imageUrl)
     end
 
     def render_not_found_response

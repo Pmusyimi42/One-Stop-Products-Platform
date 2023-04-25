@@ -53,8 +53,9 @@ class ApplicationController < ActionController::API
 
     def unprocessable_entity_response(invalid)
         render json: { errors: invalid.record.errors}, status: :unprocessable_entity
+    end
 
-    end 
+    
     
     def encode_token(payload)
         JWT.encode(payload, 'my_s3cr3t')
@@ -80,6 +81,8 @@ class ApplicationController < ActionController::API
         if decoded_token
             admin_id = decoded_token[0]['admin_id']
             @admin = Admin.find_by_id(admin_id)
+            email = decoded_token[0]['email']
+            @user = User.find_by(email: email)
         end
     end
 
