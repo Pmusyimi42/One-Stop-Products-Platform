@@ -53,8 +53,9 @@ class ApplicationController < ActionController::API
 
     def unprocessable_entity_response(invalid)
         render json: { errors: invalid.record.errors}, status: :unprocessable_entity
+    end
 
-    end 
+    
     
     def encode_token(payload)
         JWT.encode(payload, 'my_s3cr3t')

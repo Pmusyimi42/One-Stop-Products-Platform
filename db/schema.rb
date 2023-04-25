@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2023_04_24_232304) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "admin_products", force: :cascade do |t|
-    t.integer "admin_id", null: false
-    t.integer "product_id", null: false
+    t.bigint "admin_id", null: false
+    t.bigint "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["admin_id"], name: "index_admin_products_on_admin_id"
@@ -57,8 +60,8 @@ ActiveRecord::Schema.define(version: 2023_04_24_232304) do
 
   create_table "order_items", force: :cascade do |t|
     t.integer "quantity"
-    t.integer "order_id", null: false
-    t.integer "product_id", null: false
+    t.bigint "order_id", null: false
+    t.bigint "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_order_items_on_order_id"
@@ -74,7 +77,7 @@ ActiveRecord::Schema.define(version: 2023_04_24_232304) do
   create_table "payments", force: :cascade do |t|
     t.string "status"
     t.decimal "amount"
-    t.integer "order_id", null: false
+    t.bigint "order_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_payments_on_order_id"
@@ -94,8 +97,8 @@ ActiveRecord::Schema.define(version: 2023_04_24_232304) do
   end
 
   create_table "product_categories", force: :cascade do |t|
-    t.integer "product_id", null: false
-    t.integer "category_id", null: false
+    t.bigint "product_id", null: false
+    t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_product_categories_on_category_id"

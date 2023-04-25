@@ -8,7 +8,7 @@ import Navbar from "./components/Navbar";
 import Products from "./pages/products";
 
 import AddProducts from './components/AddProduct';
-import Preview from './components/Preview';
+// import Preview from './components/Preview';
 // import AddProductForm from './components/AddProductForm';
 // import UserDetails from './components/UserDetails';
 import ProductList from './components/ProductList';
@@ -17,6 +17,8 @@ import AddNewUser from './components/AddNewUser';
 import EditProduct from "./components/EditProduct";
 import UserDetials from "./components/UserDetials";
 import AdminSection from "./components/AdminSection";
+// import EditProduct from "./components/EditProduct";
+// import UserDetials from "./components/UserDetials";
 
 
 
@@ -37,7 +39,6 @@ export default function App() {
           <Route path='/adminsection' component={AdminSection} />
 
           <Route path="/product_categories/:id" component={SingleProduct} />
-
 
           <Route path='/dashboard' element={<Dashboard />} />
         </Switch>
