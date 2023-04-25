@@ -18,6 +18,7 @@ import AddNewUser from './components/AddNewUser';
 import EditProduct from "./components/EditProduct";
 import UserDetials from "./components/UserDetails";
 import AdminSection from "./components/AdminSection";
+import Cart from "./components/Cart";
 // import EditProduct from "./components/EditProduct";
 // import UserDetials from "./components/UserDetials";
 
@@ -39,6 +40,7 @@ export default function App() {
           <Route path='/products_list' component={ProductList} />
           <Route path='/adminsection' component={AdminSection} />
 
+          <Route path='/cart' component={Cart} />
 
           <Route path="/products" component={Products} />
           <Route path="/about" component={About} />

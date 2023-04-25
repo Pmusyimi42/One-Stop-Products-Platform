@@ -11,10 +11,10 @@ import { BsBagCheckFill } from "react-icons/bs";
 function Navlink({search, setSearch}) {
   return (
     <div className='navlink'>
-      <div>
+      <div className='p-2 mt-2'>
         <img src={image}/>
       </div>
-      <div className='nav mt-5'>
+      <div className='nav mt-3'>
         <nav className="navba">
           <div className="container-fluid">
           <form className="d-flex" role="search">
@@ -22,10 +22,8 @@ function Navlink({search, setSearch}) {
             <button className="btn btn-outline-dark" type="submit">Search</button>
           </form>
           </div>
-        </nav>  
-      </div>
-      
-      <div className="create">
+        </nav>
+        <div className="create mx-auto">
         <Link to={"/signup"} style={{ color: "black" }}>
           <BsFillPeopleFill />
             Account
@@ -33,9 +31,12 @@ function Navlink({search, setSearch}) {
       </div>
       
       <div className="cart">
-          <Link to={"/signup"} style={{ color: "black" }}><BsBagCheckFill />Cart</Link>
+          <Link to={"/cart"} style={{ color: "black" }}><BsBagCheckFill />Cart</Link>
       </div>
-
+  
+      </div>
+      
+      
       
     </div>
   )

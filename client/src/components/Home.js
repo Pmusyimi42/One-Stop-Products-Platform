@@ -41,7 +41,7 @@ function Home() {
       </div>
 
       <div className="row">
-        <div className="col-12 mt-5 mb-4">
+        <div className="col-12 mt-3 mb-4">
           <h1 className="display-6-fw-bolder text-center">FLASH SALE</h1>
           <hr />
         </div>
