@@ -5,6 +5,7 @@
     background-color:  #D9D9D9;
     display: flex;
     margin-left: 30%;
+    margin-top: 70px;
 }
 
 img{
@@ -20,19 +21,22 @@ img{
 
 
 .create{
+    margin-top: 0px;
     margin-bottom: 70px;
     display: flex;
     float: right;
     font-size: x-large;
-    font-weight: 500;
+    font-weight: 300;
     margin-right: 50px;
 }
 
 .cart{
+    margin-top: 0px;
     margin-bottom: 70px;
     display: flex;
     float: right;
     font-size: x-large;
-    font-weight: 500;
+    font-weight: 300;
     margin-right: 80px;
 }
+
