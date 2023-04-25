@@ -1,9 +1,11 @@
 import React from 'react'
 import './Navlink.css';
+// import { NavLink } from 'react-router-dom';
 import image from './images/shoplogo3.png'
 import { Link } from "react-router-dom";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { BsBagCheckFill } from "react-icons/bs";
+import { BsPersonCheckFill } from "react-icons/bs";
 
 
 
@@ -24,13 +26,24 @@ function Navlink({search, setSearch}) {
           </div>
         </nav>  
       </div>
+     
       
       <div className="create">
         <Link to={"/signup"} style={{ color: "black" }}>
           <BsFillPeopleFill />
             Account
-         </Link>
+        </Link>
       </div>
+
+      <div className="create">
+        <Link to={"/signin"} style={{ color: "black" }}>
+          <BsPersonCheckFill />
+            Login
+        </Link>
+      </div>
+      
+       
+    
       
       <div className="cart">
           <Link to={"/signup"} style={{ color: "black" }}><BsBagCheckFill />Cart</Link>
