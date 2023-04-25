@@ -6,6 +6,7 @@ import Home from './components/Home';
 import SingleProduct from './components/SingleProduct';
 import Navbar from "./components/Navbar";
 import Products from "./pages/products";
+import About from "./pages/About";
 
 import AddProducts from './components/AddProduct';
 // import Preview from './components/Preview';
@@ -30,13 +31,19 @@ export default function App() {
         <Navbar />
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/products" component={Products} />
+
 
           <Route path="/userdetails" component={UserDetials} />
            <Route path='/add_products' component={AddProducts} />
            <Route path='/editproduct' component={EditProduct} />
           <Route path='/products_list' component={ProductList} />
           <Route path='/adminsection' component={AdminSection} />
+
+
+          <Route path="/products" component={Products} />
+          <Route path="/about" component={About} />
+
+         
 
           <Route path="/product_categories/:id" component={SingleProduct} />
 
