@@ -18,7 +18,10 @@ import AddNewUser from './components/AddNewUser';
 import EditProduct from "./components/EditProduct";
 import UserDetials from "./components/UserDetails";
 import AdminSection from "./components/AdminSection";
+
 import Footer from "./components/layout/Footer";
+
+import LoginForm from "./components/LoginForm";
 
 
 
@@ -39,6 +42,7 @@ export default function App() {
           <Route path='/products_list' component={ProductList} />
           <Route path='/adminsection' component={AdminSection} />
           <Route path='/signup' component={SignUpForm} />
+          <Route path='/login' component={LoginForm} />
 
           <Route path="/products" component={Products} />
           <Route path="/about" component={About} />
