@@ -2,7 +2,7 @@ import React, { useState,useEffect } from "react";
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './components/Home';
-// import UserDetails from './components/UserDetails';
+
 import SingleProduct from './components/SingleProduct';
 import Navbar from "./components/Navbar";
 import Products from "./pages/products";
@@ -13,17 +13,15 @@ import Cart from "./components/Cart";
 import SignUpForm from "./components/SignUpForm";
 
 import AddProducts from './components/AddProduct';
-// import Preview from './components/Preview';
-// import AddProductForm from './components/AddProductForm';
-// import UserDetails from './components/UserDetails';
+
 import ProductList from './components/ProductList';
 import Dashboard from './components/Dashboard';
 import AddNewUser from './components/AddNewUser';
 import EditProduct from "./components/EditProduct";
 import UserDetials from "./components/UserDetails";
 import AdminSection from "./components/AdminSection";
-// import EditProduct from "./components/EditProduct";
-// import UserDetials from "./components/UserDetials";
+import Footer from "./components/layout/Footer";
+
 
 
 
