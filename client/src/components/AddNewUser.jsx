@@ -4,6 +4,7 @@ import './AddNewUser.css';
 export default function AddNewUser() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [admin_id, setAdminId] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('');
 
@@ -11,7 +12,7 @@ export default function AddNewUser() {
     event.preventDefault();
 
     // Send a POST request to your API endpoint to save the user's data to the database
-    fetch('/users', {
+    fetch('/admin_users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -20,7 +21,8 @@ export default function AddNewUser() {
         name,
         email,
         password,
-        role
+        role,
+        admin_id
       })
     })
       .then(response => response.json())
@@ -31,6 +33,7 @@ export default function AddNewUser() {
         setEmail('');
         setPassword('');
         setRole('');
+        setAdminId('')
       })
       .catch(error => {
         console.error('Error saving user:', error);
@@ -50,6 +53,10 @@ export default function AddNewUser() {
       <div className="add-user-form-row">
         <label htmlFor="email" className="add-user-label">Email address</label>
         <input type="email" className="add-user-input" id="email" value={email} onChange={(event) => setEmail(event.target.value)} />
+      </div>
+      <div className="add-user-form-row">
+        <label htmlFor="username" className="add-user-label">Admin Id</label>
+        <input type="text" className="add-user-input" id="username" value={admin_id} onChange={(event) => setAdminId(event.target.value)} />
       </div>
       <div className="add-user-form-row">
         <label htmlFor="password" className="add-user-label">Password</label>

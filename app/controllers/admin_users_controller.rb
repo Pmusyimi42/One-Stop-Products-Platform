@@ -35,7 +35,7 @@ class AdminUsersController < ApplicationController
       end
   
       def admin_user_params
-        params.permit(:id, :admin_id, :user_id)
+        params.permit(:id, :admin_id, :name, :email, :password, :role)
      end
 
      def render_not_found_response
