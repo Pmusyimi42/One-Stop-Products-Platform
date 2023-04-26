@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './SignUpForm.css';
 import { useHistory} from "react-router-dom";
+import cartoon from "../images2/signup.png"
 
 
 
@@ -61,7 +62,11 @@ function SignUpForm() {
   };
 
   return (
-    
+    <div className="signup-form border">
+    <div className="mx-auto flex justify-center items-center">
+        <div className="hidden md:block max-w-lg">
+            <img className="w-full" src={cartoon} alt="Sitting" />
+        </div>
 
     <form onSubmit={handleSubmit}>
 
@@ -103,6 +108,8 @@ function SignUpForm() {
 
       <button type="submit">Sign Up</button>
     </form>
+    </div>
+    </div>
     
   );
 }
