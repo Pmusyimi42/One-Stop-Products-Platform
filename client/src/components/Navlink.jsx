@@ -35,7 +35,7 @@ function Navlink({search, setSearch,n}) {
       </div>
 
       <div className="create">
-        <Link to={"/signin"} style={{ color: "black" }}>
+        <Link to={"/login"} style={{ color: "black" }}>
           <BsPersonCheckFill />
             Login
         </Link>
