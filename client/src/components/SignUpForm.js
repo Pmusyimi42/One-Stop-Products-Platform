@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './SignUpForm.css';
-// import { Link } from "react-router-dom";
+import { useHistory} from "react-router-dom";
 
 
 
@@ -9,6 +9,10 @@ function SignUpForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const history = useHistory();
+  
+  
+ 
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -48,6 +52,8 @@ function SignUpForm() {
         setEmail('');
         setPassword('');
         setPasswordConfirmation('');
+        //this redirects to login page after sign up
+        history.push("/login");
       })
       .catch((error) => {
         console.error(error);
@@ -58,6 +64,7 @@ function SignUpForm() {
     
 
     <form onSubmit={handleSubmit}>
+
       <label htmlFor="name">Name</label>
       <input
         type="text"
