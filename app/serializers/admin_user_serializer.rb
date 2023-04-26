@@ -1,7 +1,6 @@
 class AdminUserSerializer < ActiveModel::Serializer
-  attributes :id, :admin_id, :user_id
+  attributes :id, :admin_id, :name, :role, :email, :password
 
   belongs_to :admin
-  belongs_to :user
 
 end

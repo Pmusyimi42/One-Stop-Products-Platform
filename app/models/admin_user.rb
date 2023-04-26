@@ -1,10 +1,10 @@
 class AdminUser < ApplicationRecord
     belongs_to :admin
-    belongs_to :user
+    has_secure_password
 
 
-    validates :admin_id, presence: true
-    validates :user_id, presence: true
+    # validates :admin_id, presence: true
+    # validates :user_id, presence: true
 
 
 end
