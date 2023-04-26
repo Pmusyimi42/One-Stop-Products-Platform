@@ -20,7 +20,7 @@ import AddNewUser from './components/AddNewUser';
 import EditProduct from "./components/EditProduct";
 import UserDetials from "./components/UserDetails";
 import AdminSection from "./components/AdminSection";
-
+import Footer from "./components/layout/Footer";
 
 
 
