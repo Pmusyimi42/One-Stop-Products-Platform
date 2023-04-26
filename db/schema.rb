@@ -10,14 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_24_223932) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 2023_04_26_163417) do
 
   create_table "admin_products", force: :cascade do |t|
-    t.bigint "admin_id", null: false
-    t.bigint "product_id", null: false
+    t.integer "admin_id", null: false
+    t.integer "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["admin_id"], name: "index_admin_products_on_admin_id"
@@ -26,9 +23,12 @@ ActiveRecord::Schema.define(version: 2023_04_24_223932) do
 
   create_table "admin_users", force: :cascade do |t|
     t.integer "admin_id"
-    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "role"
+    t.string "email"
+    t.string "password_digest"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(version: 2023_04_24_223932) do
 
   create_table "order_items", force: :cascade do |t|
     t.integer "quantity"
-    t.bigint "order_id", null: false
-    t.bigint "product_id", null: false
+    t.integer "order_id", null: false
+    t.integer "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_order_items_on_order_id"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2023_04_24_223932) do
   create_table "payments", force: :cascade do |t|
     t.string "status"
     t.decimal "amount"
-    t.bigint "order_id", null: false
+    t.integer "order_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_payments_on_order_id"
@@ -89,15 +89,15 @@ ActiveRecord::Schema.define(version: 2023_04_24_223932) do
     t.boolean "create"
     t.boolean "edit"
     t.boolean "view"
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_permissions_on_user_id"
   end
 
   create_table "product_categories", force: :cascade do |t|
-    t.bigint "product_id", null: false
-    t.bigint "category_id", null: false
+    t.integer "product_id", null: false
+    t.integer "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_product_categories_on_category_id"
@@ -119,7 +119,6 @@ ActiveRecord::Schema.define(version: 2023_04_24_223932) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "role"
   end
 
   add_foreign_key "admin_products", "admins"
