@@ -612,75 +612,169 @@ function LoginForm({ handleLogin }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleLogin(setErrors, e);
+    const formData = {
+      email: e.target.email.value,
+      password: e.target.password.value,
+      
+    };
+
+    fetch("/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setEmail("");
+        setPassword("");
+        // this redirects to dashboard page after login
+        history.push("/");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
-    <div className="mt-5">
-      <div className="flex justify-center items-center p-5">
-        <div className="hidden sm:block max-w-lg">
-          <img className="w-full" src={cartoon} alt="Sitting" />
-        </div>
-        <form
-          onSubmit={handleSubmit}
-          className="shadow-lg shadow-black flex flex-col px-10 bg-white max-w-lg"
-        >
-          <div
-            className="my-3 text-center flex justify-center text-slate-300"
-            style={{ fontSize: "5em" }}
-          >
-            <RiLoginCircleLine />
-          </div>
-          
-          <div className="flex my-3">
-            <div className="border border-black py-2 px-3 flex items-center" style={{ backgroundColor: "#D9D9D9" }}>
-              <RiAccountCircleLine color="#000" />
-            </div>
-            <input
-              type="text"
-              className="outline-none  border border-black p-2"
-              name="email"
-              placeholder="Email"
-            />
-          </div>
+    <form onSubmit={handleSubmit}>
+      {/* <h2>Login</h2> */}
 
-          <div className="flex my-3">
-            <div className="border border-black py-2 px-3 flex items-center" style={{ backgroundColor: "#D9D9D9" }}>
-              <GiPadlock color="#000" />
-            </div>
-            <input
-              type="password"
-              className=" outline-none border border-black p-2"
-              name="password"
-              placeholder="Password"
-            />
-          </div>
+      <label htmlFor="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        value={email}
+        onChange={handleEmailChange}
+        required
+      />
 
-          {errors.error ? (
-            <div className="text-red-600 text-sm text-center">
-              {" "}
-              - {errors.error}
-            </div>
-          ) : null}
-
-          <NavLink to="/" className="text-black text-sm text-right hover:text-sky-700">
-            Forgot password
-          </NavLink>
-
-          <div className="flex py-4">
-            <div>
-              <input type="checkbox" className="mr-2" />
-              <span className="text-black">Remember me</span>
-            </div>
-            <button className="bg-F47458-700 w-max px-4 py-2 rounded-md my-2 mx-auto hover:bg-F47458-500 hover:text-white">
-              Login
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+      <label htmlFor="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        value={password}
+        onChange={handlePasswordChange}
+        required
+      />
+      <button type="submit">Log In</button>
+    </form>
   );
 }
 
 export default LoginForm;
+
+//*******login 4
+
+// import React, { useState, useEffect } from 'react';
+// import { useHistory } from 'react-router-dom';
+// import './LoginForm.css';
+
+// function LoginForm() {
+//   const history = useHistory();
+
+//   const [user, setUser] = useState(null);
+//   const [email, setEmail] = useState('');
+//   const [password, setPassword] = useState('');
+
+//   useEffect(() => {
+//     const token = sessionStorage.getItem('token');
+//     if (token) {
+//       fetch('/user', {
+//         headers: {
+//           Authorization: `Bearer ${token}`,
+//         },
+//       })
+//         .then((res) => {
+//           if (res.ok) {
+//             return res.json();
+//           }
+//           throw new Error('Unauthorized');
+//         })
+//         .then((data) => {
+//           setUser(data.user);
+//         })
+//         .catch((error) => {
+//           console.log(error);
+//           sessionStorage.removeItem('token');
+//           setUser(null);
+//         });
+//     } else {
+//       setUser(null);
+//     }
+//   }, []);
+
+//   const handleLogin = async (e) => {
+//     e.preventDefault();
+//     try {
+//       const res = await fetch('/user', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({ email, password }),
+//       });
+//       if (res.ok) {
+//         const data = await res.json();
+//         sessionStorage.setItem('token', data.token);
+//         setUser(data.user);
+//         history.push('/');
+//       } else {
+//         throw new Error('Invalid credentials');
+//       }
+//     } catch (error) {
+//       console.log(error);
+//       throw error;
+//     }
+//   };
+
+//   const handleLogout = () => {
+//     sessionStorage.removeItem('token');
+//     setUser(null);
+//     history.push('/');
+//   };
+
+//   const handleOrder = async (order) => {
+//     try {
+//       const token = sessionStorage.getItem('token');
+//       const res = await fetch('/orders', {
+//         method: 'POST',
+//         headers: {
+//           Authorization: `Bearer ${token}`,
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({ order }),
+//       });
+//       if (res.ok) {
+//         history.push('/orders');
+//       } else {
+//         throw new Error('Unable to create order');
+//       }
+//     } catch (error) {
+//       console.log(error);
+//       throw error;
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <form onSubmit={handleLogin}>
+//         <label>
+//           Email:
+//           <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+//         </label>
+//         <br />
+//         <label>
+//           Password:
+//           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+//         </label>
+//         <br />
+//         <button type="submit">Login</button>
+//       </form>
+//     </div>
+//   );
+// }
+
+// export default LoginForm;
+
 
