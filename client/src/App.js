@@ -19,10 +19,9 @@ import Dashboard from './components/Dashboard';
 import AddNewUser from './components/AddNewUser';
 import EditProduct from "./components/EditProduct";
 import UserDetials from "./components/UserDetails";
-import AdminSection from "./components/AdminSection";import Footer from "./components/Footer";
-
-// import LoginForm from "./LoginForm";
-// import SignUpForm from "./SignUpForm";
+import AdminSection from "./components/AdminSection";
+// import EditProduct from "./components/EditProduct";
+// import UserDetials from "./components/UserDetials";
 
 
 
@@ -49,7 +48,7 @@ export default function App() {
          
 
           <Route path="/product_categories/:id" component={SingleProduct} />
-          <Route path="/Footer" component={Footer} />
+
           <Route path='/dashboard' element={<Dashboard />} />
         </Switch>
       </Router>
