@@ -40,11 +40,8 @@ function Navlink({search, setSearch}) {
           <BsPersonCheckFill />
             Login
         </Link>
-      </div>
-      
-       
-    
-      
+      </div>         
+          
       <div className="cart">
           <Link to={"/signup"} style={{ color: "black" }}><BsBagCheckFill />Cart</Link>
       </div>
