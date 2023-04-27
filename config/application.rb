@@ -39,5 +39,23 @@ module OneStopProductsPlatform
         resource '*', headers: :any, methods: [:get, :post, :put, :delete, :options]
       end
     end
+    
+    # Disable caching
+    config.middleware.use Rack::Deflater
+    config.middleware.insert_before 0, Rack::Cache, {
+      metastore:    URI.encode("file:/dev/null"),
+      entitystore:  URI.encode("file:/dev/null"),
+      verbose:     false,
+      allow_reload: false,
+      allow_revalidate: false,
+      expires_in: 0
+    }, {
+      public: true,
+      must_revalidate: true,
+      no_cache: true,
+      no_store: true,
+      private: false,
+      max_age: 0
+    }
   end
 end
