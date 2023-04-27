@@ -43,6 +43,9 @@ source 'https://gems.ruby-china.com' do
   gem 'nokogiri', '1.11.7'
 end
 
+gem 'rack-cache'
+
+
 
 group :development do
   gem 'listen', '~> 3.3'
