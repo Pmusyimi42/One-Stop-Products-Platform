@@ -1,7 +1,4 @@
-require_relative "boot"
-
 require "rails"
-# Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
 require "active_record/railtie"
@@ -12,19 +9,10 @@ require "action_mailbox/engine"
 require "action_text/engine"
 require "action_view/railtie"
 require "action_cable/engine"
-# require "sprockets/railtie"
 require "rails/test_unit/railtie"
+require "rack/cors"
 
-# Require the gems listed in Gemfile, including any gems
-# you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-config.middleware.insert_before 0, Rack::Cors do
-  allow do
-    origins 'https://one-stop-products-frontend-pmusyimi42.vercel.app'
-    resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head]
-  end
-end
-
 
 module OneStopProductsPlatform
   class Application < Rails::Application
@@ -43,5 +31,13 @@ module OneStopProductsPlatform
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    
+    # Enable CORS to accept requests from https://one-stop-products-frontend-pmusyimi42.vercel.app/
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'https://one-stop-products-frontend-pmusyimi42.vercel.app'
+        resource '*', headers: :any, methods: [:get, :post, :put, :delete, :options]
+      end
+    end
   end
 end
