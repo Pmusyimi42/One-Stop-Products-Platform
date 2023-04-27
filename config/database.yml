@@ -14,14 +14,11 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
-production:
+default: &default
   adapter: sqlite3
-  encoding: unicode
-  database: myapp_production
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: patrick
-  password: x7WIi9CQBOlho3FbljTZ3Ldef3RcZ5PG
-  host: localhost
+  database: db/one-stop-products-platform.sqlite3
+  pool: 5
+  timeout: 5000
 
 
 development:
