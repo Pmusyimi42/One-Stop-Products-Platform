@@ -15,13 +15,24 @@ class CartItemsController < ApplicationController
 
   # POST /cart_items
   def create
-    @cart_item = CartItem.new(cart_item_params)
-
-    if @cart_item.save
-      render json: @cart_item, status: :created, location: @cart_item
+    @cart_item = CartItem.find_by(product_id: cart_item_params[:product_id])
+    if @cart_item 
+      @cart_item.quantity = @cart_item.quantity + cart_item_params[:quantity]
+      @cart_item.save
     else
-      render json: @cart_item.errors, status: :unprocessable_entity
+      @cart_item = CartItem.create!({
+        cart_id: User.find(cart_item_params[:user_id]).cart.id,
+        product_id: cart_item_params[:product_id],
+        quantity: cart_item_params[:quantity]
+      })
     end
+
+   render json: @cart_item
+    # if @cart_item.save
+    #   render json: @cart_item, status: :created, location: @cart_item
+    # else
+    #   render json: @cart_item.errors, status: :unprocessable_entity
+    # end
   end
 
   # PATCH/PUT /cart_items/1
@@ -36,6 +47,7 @@ class CartItemsController < ApplicationController
   # DELETE /cart_items/1
   def destroy
     @cart_item.destroy
+    render json: {}
   end
 
   private
@@ -46,6 +58,6 @@ class CartItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cart_item_params
-      params.require(:cart_item).permit(:cart_id, :product_id, :quantity)
+      params.permit(:user_id, :product_id, :quantity)
     end
 end

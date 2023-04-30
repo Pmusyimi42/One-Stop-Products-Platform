@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   
       def show
         user = find_users
-        render json: user, status: :ok
+        render json: {**user.as_json,cart: user.cart.cart_items}, status: :ok
       end
   
       def create
@@ -48,6 +48,7 @@ class UsersController < ApplicationController
       private
   
       def find_users
+        puts params[:id]
         User.find(params[:id])
       end
   
