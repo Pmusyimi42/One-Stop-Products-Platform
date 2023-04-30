@@ -14,15 +14,12 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
-production:
-  adapter: postgresql
+default: &default
+  adapter: sqlite3
   encoding: unicode
-  database: myapp_production
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: patrick
-  password: x7WIi9CQBOlho3FbljTZ3Ldef3RcZ5PG
-  host: localhost
-
 
 development:
   <<: *default

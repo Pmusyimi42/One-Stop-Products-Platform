@@ -246,13 +246,13 @@
 
 import React, { useState, useEffect } from "react";
 import "./LoginForm.css";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const history = useHistory();
   const [user, setUser] = useState(null);
+  const navigate = useNavigate()
 
   useEffect(() => {
         const token = sessionStorage.getItem('token');
@@ -308,7 +308,7 @@ function LoginForm() {
         setEmail("");
         setPassword("");
         // this redirects to dashboard page after login
-        history.push("/");
+        navigate("/");
       })
       .catch((error) => {
         console.error(error);

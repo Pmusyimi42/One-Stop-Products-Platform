@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './SignUpForm.css';
-import { useHistory} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import cartoon from "../images2/signup.png"
 
 
@@ -10,7 +10,7 @@ function SignUpForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const history = useHistory();
+  const navigate = useNavigate()
   
   
  
@@ -54,7 +54,7 @@ function SignUpForm() {
         setPassword('');
         setPasswordConfirmation('');
         //this redirects to login page after sign up
-        history.push("/login");
+        navigate("/login");
       })
       .catch((error) => {
         console.error(error);
