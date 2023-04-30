@@ -87,7 +87,7 @@
   color: var(--bgA);
   cursor: pointer;
   z-index: 2;
-  font-size: 20px;
+  font-size: 30px;
   position: absolute;
 }
 .scroll-buttons-right:hover, .scroll-buttons-left:hover {

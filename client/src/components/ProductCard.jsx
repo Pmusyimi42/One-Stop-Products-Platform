@@ -28,7 +28,7 @@ function ProductCard ({item,key,addToCart}){
          <div className="card-body">
            {showActions? <p className="card-text" style={{marginTop:"5px"}}></p> :null}
            {showActions?
-           <button className="hoverleft" onClick={(e)=>{
+           <button className="hover" onClick={(e)=>{
                e.stopPropagation()
                e.preventDefault()
                  fetch("/cart_items",{
