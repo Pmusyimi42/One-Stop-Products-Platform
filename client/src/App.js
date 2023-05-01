@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from "react";
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-dom";
 import Home from './components/Home';
 
 import SingleProduct from './components/SingleProduct';
@@ -29,13 +29,29 @@ import Footer from "./components/layout/Footer";
 export default function App() {
 
   const [cart, setCart] = useState([])
+  const {id} = useParams()
+   
+
+  function setToCart(){
+    setCart([]) 
+
+  }
 
     useEffect(() =>{
-        fetch("/users/2")
-         .then((response) => response.json())
-         .then((data) => {
-            setCart(data.cart)
+      const user = localStorage.getItem("user")
+        if (user) {
+          fetch(`/users/${user.id}`)
+         .then((response) => {
+          if (response.status < 400) {
+               response.json().then((data) => {
+                if (data.cart){
+                  setCart(data.cart)
+                }
+             })
+          }
          })
+         
+        }
         //  console.log(refresher)
     },[]);
 
@@ -87,7 +103,8 @@ function changeQuantity(qty, item_id){
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" exact element={<Home n={cart.length} addToCart={addToCart}/>} />
+          <Route path="/" exact element={<Home n={cart.length} addToCart={addToCart} setToCart={setToCart}/>} />
+          <Route path="/login" element={<LoginForm/>} />
           <Route path="/userdetails" element={<UserDetials/>} />
           <Route path='/add_products' element={<AddProducts/>} />
           <Route path='/editproduct' element={<EditProduct/>} />
