@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import EditProduct from './EditProduct';
 
 function ProductList() {
@@ -16,7 +17,7 @@ function ProductList() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`/products?_page=${currentPage}&perPage=5&sort=-createdAt`, {
+    fetch('/products', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -32,13 +33,6 @@ function ProductList() {
       .catch(error => console.log(error))
   }, []);
 
-  function handlePrevPage() {
-    setCurrentPage(prevPage => prevPage - 1);
-  }
-
-  function handleNextPage() {
-    setCurrentPage(prevPage => prevPage + 1);
-  }
   const handleUpdateProduct = (productId, title, description, imageUrl, price) => {
     const productToUpdate = { title, description, imageUrl, price };
     fetch(`/products/${productId}`, {
@@ -48,17 +42,30 @@ function ProductList() {
       },
       body: JSON.stringify(productToUpdate),
     })
-      .then((response) => response.json())
-      .then((updatedProduct) => {
-        setProducts((prevProducts) =>
-          prevProducts.map((product) =>
-            product.id === updatedProduct.id ? updatedProduct : product
-          )
-        );
-        setEditProductId(false);
-      })
-      .catch((error) => console.error(error));
+    .then((response) => response.json())
+    .then((updatedProduct) => {
+      setProducts((prevProducts) =>
+        prevProducts.map((product) =>
+          product.id === updatedProduct.id ? updatedProduct : product
+        )
+      );
+      setEditProductId(false);
+      Swal.fire({
+        title: 'Product updated!',
+        text: 'The product was updated successfully',
+        icon: 'success'
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+      Swal.fire({
+        title: 'Error updating product!',
+        text: 'Failed to update the product. Please try again later',
+        icon: 'error'
+      });
+    });
   };
+  
 
   const handleEditProduct = (productId) => {
     setEditProductId(productId);
@@ -73,23 +80,45 @@ function ProductList() {
   };
 
   function handleDelete(product) {
-    if (window.confirm("Are you sure you want to delete?")) {
-      fetch(`/products/${product.id}`, {
-        method: 'DELETE',
-      })
-      .then(response => {
-        if (response.ok) {
-          setProducts(prevProducts => prevProducts.filter(p => p.id !== product.id));
-        } else {
-          console.log('Error deleting product');
-        }
-      })
-      .catch(error => {
-        console.log(error);
-        alert('Failed to delete product');
-      });
-    }
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this product!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`/products/${product.id}`, {
+          method: 'DELETE',
+        })
+        .then(response => {
+          if (response.ok) {
+            setProducts(prevProducts => prevProducts.filter(p => p.id !== product.id));
+            Swal.fire(
+              'Deleted!',
+              'Product has been deleted.',
+              'success'
+            )
+          } else {
+            console.log('Error deleting product');
+          }
+        })
+        .catch(error => {
+          console.log(error);
+          alert('Failed to delete product');
+        });
+      }
+    })
   }
+  
+  
+  
+  
+  
+  
+  
+  
   
   
  
@@ -97,7 +126,7 @@ function ProductList() {
     
 
     <div className="p-2 overflow-x-scroll  h-screen">
-      <p>Products Preview</p>
+      <p className='text-center text-3xl font-semibold'>Products Preview</p>
     {loading && <div className="p-4">Loading products...</div>}
     {error && <div className="p-4">Error loading products: {error}</div>}
     {!loading && !products.length && <div className="p-4">No products found</div>}<div>
@@ -141,22 +170,6 @@ function ProductList() {
           ))
           }
 
-      </div>
-      <div className="flex justify-between">
-        <button
-          className={`bg-gray-200 rounded-md px-4 py-2 ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-300'}`}
-          onClick={handlePrevPage}
-          disabled={currentPage === 1}
-        >
-          Previous
-        </button>
-        <button
-          className={`bg-gray-200 rounded-md px-4 py-2 ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-300'}`}
-          onClick={handleNextPage}
-          disabled={currentPage === totalPages}
-        >
-          Next
-        </button>
       </div>
     </div>
   );
