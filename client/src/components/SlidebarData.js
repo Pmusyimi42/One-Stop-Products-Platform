@@ -30,14 +30,14 @@ export const SidebarData = [
   //   icon: <IoIcons.IoIosPaper />,
   //   cName: "nav-text"
   // },
-  {
+  // {
 
-    title: "Admin Section",
-    path: "/adminsection",
+  //   title: "Admin Section",
+  //   path: "/adminsection",
 
-    icon: <IoIcons.IoIosPaper />,
-    cName: "nav-text"
-  },
+  //   icon: <IoIcons.IoIosPaper />,
+  //   cName: "nav-text"
+  // },
   
   {
     title: "About Us",

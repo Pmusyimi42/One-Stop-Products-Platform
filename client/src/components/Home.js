@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import Navlink from "./Navlink";
-import Footer from "./layout/Footer"
 import ProductCard from "./ProductCard";
 import CategoriesFilter from "./CategoriesFilter";
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from 'react-icons/fa'
@@ -88,7 +87,6 @@ function Home({n,addToCart, setToCart}) {
         </div>
         </div>
         <div>
-          <Footer />
         </div>
         {/* {numItems < (list.length > 0 ? list.length : searchItems.length) && (
           <button onClick={handleShowMore} className="hmBtn" >Show more</button>

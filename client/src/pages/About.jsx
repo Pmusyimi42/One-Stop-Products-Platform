@@ -1,6 +1,5 @@
 // import React from 'react'
 import './About.css';
-import Footer from '../components/layout/Footer';
 // import image from './images/shoplogo1 (1).png'
 
 
@@ -279,9 +278,7 @@ const About = () => {
         </div>
       </div>
     </div>
-    <div>
-      <Footer />
-    </div>
+    
     </>
   )
 }
