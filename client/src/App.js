@@ -24,6 +24,8 @@ import LoginForm from "./components/LoginForm";
 import Footer from "./components/layout/Footer";
 import AuthProvider from './context/AuthContext';
 import ProductsProvider from './context/ProductsContext';
+import AuthProvider from './context/AuthContext';
+import ProductsProvider from './context/ProductsContext';
 
 
 
