@@ -20,6 +20,8 @@ function Home({n,addToCart, setToCart}) {
     window.scrollTo(0, 0);
   }, []);
 
+
+  
   const contRef = useRef()
 
     function handleScroll(pixels) {
