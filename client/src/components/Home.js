@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Navlink from "./Navlink";
+import Footer from "./layout/Footer"
 import ProductCard from "./ProductCard";
 import CategoriesFilter from "./CategoriesFilter";
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from 'react-icons/fa'
