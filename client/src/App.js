@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from "react";
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useParams, useParams } from "react-router-dom";
 import Home from './components/Home';
 
 import SingleProduct from './components/SingleProduct';
@@ -107,8 +107,7 @@ function changeQuantity(qty, item_id){
           <AuthProvider>
             <ProductsProvider>
               <Routes>
-                <Route path="/" exact element={<Home n={cart.length} addToCart={addToCart} setToCart={setToCart}/>} />
-          <Route path="/login" element={<LoginForm/>} />
+                <Route path="/" exact element={<Home n={cart.length} addToCart={addToCart}/>} />
                 <Route path="/userdetails" element={<UserDetials/>} />
                 <Route path='/add_products' element={<AddProducts/>} />
                 <Route path='/editproduct' element={<EditProduct/>} />
