@@ -22,6 +22,8 @@ import UserDetials from "./components/UserDetails";
 import AdminSection from "./components/AdminSection";
 import LoginForm from "./components/LoginForm";
 import Footer from "./components/layout/Footer";
+import AuthProvider from './context/AuthContext';
+import ProductsProvider from './context/ProductsContext';
 
 
 
@@ -86,20 +88,25 @@ function changeQuantity(qty, item_id){
     <div className="App">
       <Router>
         <Navbar />
-        <Routes>
-          <Route path="/" exact element={<Home n={cart.length} addToCart={addToCart}/>} />
-          <Route path="/userdetails" element={<UserDetials/>} />
-          <Route path='/add_products' element={<AddProducts/>} />
-          <Route path='/editproduct' element={<EditProduct/>} />
-          <Route path='/products_list' element={<ProductList/>} />
-          <Route path='/adminsection' element={<AdminSection/>} />
-          <Route path='/signup' element={<SignUpForm/>} />
-          <Route path='/cart' element={<Cart cart={cart} setCart={setCart} changeQuantity={changeQuantity} removeFromCart={removeFromCart}/>} />
-          <Route path="/products" element={<Products n={cart.length} addToCart={addToCart}/>} />
-          <Route path="/about" element={<About/>} /> 
-          <Route path="/product_categories/:id" element={<SingleProduct addToCart={addToCart}/>} />
-          <Route path='/dashboard' element={<Dashboard />} />
-        </Routes>
+          <AuthProvider>
+            <ProductsProvider>
+              <Routes>
+                <Route path="/" exact element={<Home n={cart.length} addToCart={addToCart}/>} />
+                <Route path="/userdetails" element={<UserDetials/>} />
+                <Route path='/add_products' element={<AddProducts/>} />
+                <Route path='/editproduct' element={<EditProduct/>} />
+                <Route path='/products_list' element={<ProductList/>} />
+                <Route path='/adminsection' element={<AdminSection/>} />
+                <Route path='/signup' element={<SignUpForm/>} />
+                <Route path='/cart' element={<Cart cart={cart} setCart={setCart} changeQuantity={changeQuantity} removeFromCart={removeFromCart}/>} />
+                <Route path="/products" element={<Products n={cart.length} addToCart={addToCart}/>} />
+                <Route path="/about" element={<About/>} /> 
+                <Route path="/product_categories/:id" element={<SingleProduct addToCart={addToCart}/>} />
+                <Route path='/dashboard' element={<Dashboard />} />
+              </Routes>
+            </ProductsProvider>
+          </AuthProvider>
+        <Footer/>
       </Router>
     </div>
 

@@ -1,82 +1,22 @@
-import React, { useState } from 'react';
-import { CgProfile } from 'react-icons/cg';
-import { Link } from 'react-router-dom';
-import Swal from 'sweetalert2';
+import React, { useState,useContext } from 'react';
+// import { CgProfile } from 'react-icons/cg';
+// import { Link } from 'react-router-dom';
+// import Swal from 'sweetalert2';
 // import Preview from './Preview';
+import { AuthContext } from '../context/AuthContext';
 import ProductList from './ProductList';
-import { useNavigate} from "react-router-dom";
+import { ProductsContext } from '../context/ProductsContext';
 
 
-function AddProducts() {
-  const navigate = useNavigate()
-  // const navigate = useNavigate()
+function AddProduct() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [price, setPrice] = useState();
-  const [change, setOnChange] = useState(false)
-  // const [showActions,setShowActions] = useState(false)
+  const [change, setOnChange] = useState(false);
 
+  const {AddProduct} = useContext(ProductsContext);
 
-
-  const handleImageUrlChange = (e) => {
-    setImageUrl(e.target.value);
-  };
-
-
-    const AddProduct = (title, description, imageUrl, price) => {
-      const now = new Date().toISOString(); // get current time in ISO format
-      fetch("/products", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          title,
-          description,
-          imageUrl,
-          price,
-          created_at: now // add created time to the JSON object
-        })
-      })
-    .then(response=>response.json())
-    .then(response=>{
-        console.log("add product ",response)
-        if(response.errors)
-        {
-             
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: response.errors,
-                })
-        }
-        else if(response.success==='created')
-        {
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: response.success,
-                showConfirmButton: false,
-                timer: 1500
-              })
-              // navigate('/products_list')
-
-              setOnChange(!change)
-             
-
-        }
-        else{
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: "Something went wrong!",
-            })
-
-        }
-        
-    })
-}
 
   const handleSubmit = (e)=>{
     e.preventDefault()
@@ -91,12 +31,11 @@ function AddProducts() {
   return (
     <div className='bg-zinc-300 mx-auto min-h-[80vh] flex flex-col'>
       <h1 className='mx-auto mt-2 text-3xl font-bold'>Add New Product</h1>
-      <div className='grid grid-cols-2 mt-2 mx-auto py-2 gap-2'>
-        <div className='flex flex-col bg-zinc-200 shadow-xl min-h-[80vh]'>
-          <p className='mx-auto mt-2 text-base'>Base information</p>
+      <div className='grid grid-cols-2 mt-2 mx-auto  gap-2'>
+        <div className='flex flex-col bg-zinc-300 shadow-xl min-h-[80vh]'>
           <div className='text-center'>
             <form onSubmit={handleSubmit}>
-              <h1 className='text-bold mx-auto mt-5 text-lg font-semibold'>Name</h1>
+              <h1 className='text-bold mx-auto text-lg font-semibold'>Name</h1>
               <input
                 type='text'
                 className='mx-auto mt-3 text-lg rounded-lg shadow-xl bg-zinc-200'
@@ -115,7 +54,7 @@ function AddProducts() {
               <h1 className='text-bold mx-auto mt-4 text-lg font-semibold'>Image</h1>
               <input
                 type='text'
-                onChange={handleImageUrlChange}
+                onChange={(e) => setImageUrl(e.target.value)}
                 value={imageUrl}
                 className='mx-auto mt-3 text-sm text-black bg-zinc-200 shadow-xl'
                 placeholder='Image Url'
@@ -146,4 +85,4 @@ function AddProducts() {
   );
 }
 
-export default AddProducts;
+export default AddProduct;
