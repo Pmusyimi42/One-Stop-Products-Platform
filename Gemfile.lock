@@ -3,7 +3,7 @@ GEM
   specs:
     actioncable (7.0.4.3)
       actionpack (= 7.0.4.3)
-      activesupport (= 7.0.4.3)
+      activesupport
       nio4r (~> 2.0)
       websocket-driver (>= 0.6.1)
     actionmailbox (7.0.4.3)
@@ -11,7 +11,7 @@ GEM
       activejob (= 7.0.4.3)
       activerecord (= 7.0.4.3)
       activestorage (= 7.0.4.3)
-      activesupport (= 7.0.4.3)
+      activesupport
       mail (>= 2.7.1)
       net-imap
       net-pop
@@ -20,7 +20,7 @@ GEM
       actionpack (= 7.0.4.3)
       actionview (= 7.0.4.3)
       activejob (= 7.0.4.3)
-      activesupport (= 7.0.4.3)
+      activesupport
       mail (~> 2.5, >= 2.5.4)
       net-imap
       net-pop
@@ -28,7 +28,7 @@ GEM
       rails-dom-testing (~> 2.0)
     actionpack (7.0.4.3)
       actionview (= 7.0.4.3)
-      activesupport (= 7.0.4.3)
+      activesupport
       rack (~> 2.0, >= 2.2.0)
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.0)
@@ -37,11 +37,11 @@ GEM
       actionpack (= 7.0.4.3)
       activerecord (= 7.0.4.3)
       activestorage (= 7.0.4.3)
-      activesupport (= 7.0.4.3)
+      activesupport
       globalid (>= 0.6.0)
       nokogiri (>= 1.8.5)
     actionview (7.0.4.3)
-      activesupport (= 7.0.4.3)
+      activesupport
       builder (~> 3.1)
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
@@ -52,18 +52,18 @@ GEM
       case_transform (>= 0.2)
       jsonapi-renderer (>= 0.1.1.beta1, < 0.3)
     activejob (7.0.4.3)
-      activesupport (= 7.0.4.3)
+      activesupport
       globalid (>= 0.3.6)
     activemodel (7.0.4.3)
-      activesupport (= 7.0.4.3)
+      activesupport
     activerecord (7.0.4.3)
       activemodel (= 7.0.4.3)
-      activesupport (= 7.0.4.3)
+      activesupport
     activestorage (7.0.4.3)
       actionpack (= 7.0.4.3)
       activejob (= 7.0.4.3)
       activerecord (= 7.0.4.3)
-      activesupport (= 7.0.4.3)
+      activesupport
       marcel (~> 1.0)
       mini_mime (>= 1.1.0)
     activesupport (7.0.4.3)
@@ -139,7 +139,7 @@ GEM
       activemodel (= 7.0.4.3)
       activerecord (= 7.0.4.3)
       activestorage (= 7.0.4.3)
-      activesupport (= 7.0.4.3)
+      activesupport
       bundler (>= 1.15.0)
       railties (= 7.0.4.3)
     rails-dom-testing (2.0.3)
@@ -149,7 +149,7 @@ GEM
       loofah (~> 2.19, >= 2.19.1)
     railties (7.0.4.3)
       actionpack (= 7.0.4.3)
-      activesupport (= 7.0.4.3)
+      activesupport
       method_source
       rake (>= 12.2)
       thor (~> 1.0)
