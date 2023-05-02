@@ -4,7 +4,7 @@ import ProductCard from "./ProductCard";
 import CategoriesFilter from "./CategoriesFilter";
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from 'react-icons/fa'
 
-function Home({n,addToCart}) {
+function Home({n,addToCart, setToCart}) {
   const [items, setItems] = useState([]);
   const [search, setSearch] = useState("");
   const [list, setList] = useState([]);
@@ -49,7 +49,7 @@ function Home({n,addToCart}) {
   return (
     <div className="home">
       <div>
-        <Navlink setSearch={setSearch} search={search} n={n} />
+        <Navlink setSearch={setSearch} search={search} n={n}  setToCart={setToCart}/>
       </div>
 
       <div className="row">
@@ -86,7 +86,8 @@ function Home({n,addToCart}) {
                 <FaAngleDoubleRight />
         </div>
         </div>
-        
+        <div>
+        </div>
         {/* {numItems < (list.length > 0 ? list.length : searchItems.length) && (
           <button onClick={handleShowMore} className="hmBtn" >Show more</button>
         )} */}

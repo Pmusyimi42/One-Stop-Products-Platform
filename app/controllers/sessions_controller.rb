@@ -18,9 +18,15 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    @current_user = nil
+   session.delete(:jwt_token)
+   render json: { message: 'Logged out successfully' }
+ end
+
   private
 
   def login_params
-    params.permit(:name, :email, :password)
+    params.permit(:email, :password)
   end
 end

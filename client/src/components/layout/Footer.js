@@ -6,13 +6,13 @@ function Footer() {
 
   return (
    
-      <footer className='bg-gray-600 text-white min-h-[30vh] pt-7'>
-       <div className='uppercase flex-wrap flex justify-center my-4 gap-6'>
-         <a href='#'>About us</a>
+      <footer className='bg-gray-500 mt-5 text-white min-h-[30vh] pt-7'>
+       <div className='uppercase flex-wrap flex justify-center my-4 gap-10'>
+         <a href='/about'>About us</a>
          <a href='#'>Blog</a>
          <a href='#'>Questions</a>
          <a href='#'>Faqs</a>
-         <a href='#'>Login</a>
+         <a href='/signup'>Get started</a>
        </div>
          <hr className='border-4' />
        <p className='text-center mt-5 leading-tight'>
@@ -26,7 +26,7 @@ function Footer() {
           <FaInstagram size={25} className="hover:text-orange-600 hover:cursor-pointer"/>
           <FaSmileBeam size={25} className="hover:text-orange-600 hover:cursor-pointer"/>
        </div>
-       <div className='bg-gray-500 p-7 flex items-center justify-center'>
+       <div className='bg-gray-400 p-7 flex items-center justify-center'>
           <FaRegCopyright /> <span className='ml-5'>Copyright 2023</span>
        </div>
     </footer>
