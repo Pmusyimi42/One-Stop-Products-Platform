@@ -245,10 +245,15 @@
 //******Trial loginform 3
 
 import React, { useState, useEffect } from "react";
-import "./LoginForm.css";
-import { useNavigate } from "react-router-dom";
+// import "./LoginForm.css";
+import styles from "./Login.module.css";
+import { useNavigate, Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import * as AiIcons from "react-icons/ai";
+
 
 function LoginForm() {
+  const [error, setError] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
@@ -309,7 +314,45 @@ function LoginForm() {
         setEmail("");
         setPassword("");
         // this redirects to dashboard page after login
-        navigate("/");
+        if (data.error) {
+
+          setError("Wrong names or password");
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Wrong names or password!",
+          });
+
+        } else {
+
+          localStorage.setItem("jwt", data.jwt);
+          localStorage.setItem("user", data.user);
+          // localStorage.setItem("role", data.user.role);
+          // localStorage.setItem("userId", data.user.id);
+          // localStorage.setItem("name", data.user.name);
+          // localStorage.setItem("image", data.user.profile_picture);
+
+          if (data) {
+            navigate("/");
+
+          }
+          else{
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Wrong names or password!",
+            });
+          }
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Welcome!",
+            showConfirmButton: false,
+            timer: 1500,
+
+          });
+
+        }
       })
       .catch((error) => {
         console.error(error);
@@ -317,28 +360,73 @@ function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      {/* <h2>Login</h2> */}
 
-      <label htmlFor="email">Email</label>
+    <div className={styles.login}>
+    <form className={styles.form_container} onSubmit={handleSubmit}>
+       <div>
+        <Link to={"/"} style={{ color: "white"}}> <AiIcons.AiFillHome /> HOME </Link>
+        </div>
+      {/* <h2>Login</h2> */}
+      <div className={styles.logo_container}></div>
+          <div className={styles.title_container}>
+            <p className={styles.title}>Login to your Account</p>
+            <span className={styles.subtitle}>
+              Get started with our app, just create an account and enjoy the
+              experience.
+            </span>
+          </div>
+          <br />
+    
+    <div className={styles.input_container}>
+    <label htmlFor="email">Email</label>
       <input
         type="email"
         id="email"
         value={email}
+        className={styles.input_field}
         onChange={handleEmailChange}
         required
       />
+    </div>
 
+    <div className={styles.input_container}>
       <label htmlFor="password">Password</label>
       <input
         type="password"
         id="password"
         value={password}
+        className={styles.input_field}
         onChange={handlePasswordChange}
         required
       />
-      <button type="submit">Log In</button>
+
+       <button
+              // disabled={!username || !password}
+              className={styles.sign_in_btn}
+            >
+              <span>Log in</span>
+     </button>
+    </div>
+
+    <div className={styles.separator}>
+            <hr className={styles.line} />
+            <span> Or</span>
+            <hr className={styles.line} />
+          </div>  
+          <div className={styles.link_signUp}>    
+            <Link             
+                to="/signup"
+                className={styles.sign_up_apl}
+                // className={styles.sign_in_apl}
+                style={{ textDecoration: "none", color: "white" }}
+                > <span style={{color: 'black'}}>Are you new to ShopLite?</span>
+               <span className={styles.signup_link}>Sign Up now</span>
+            </Link> 
+            
+      </div> 
     </form>
+    <div className={styles.login_gradient}/> 
+    </div>
   );
 }
 
