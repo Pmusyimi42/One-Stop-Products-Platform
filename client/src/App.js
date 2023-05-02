@@ -92,6 +92,7 @@ function changeQuantity(qty, item_id){
             <ProductsProvider>
               <Routes>
                 <Route path="/" exact element={<Home n={cart.length} addToCart={addToCart}/>} />
+                <Route path="/login" element={<LoginForm/>} />
                 <Route path="/userdetails" element={<UserDetials/>} />
                 <Route path='/add_products' element={<AddProducts/>} />
                 <Route path='/editproduct' element={<EditProduct/>} />
